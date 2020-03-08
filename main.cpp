@@ -14,31 +14,22 @@ int main() {
     typedef void (*pointFunction)(); // void (*)()
 
     vector<string> pointNames = {"New Project", "Update project", "Delete project"};
-    vector<pointFunction> pointsFunctions = {&Documenter::exampleFunc, &Documenter::exampleFunc,
-    &Documenter::exampleFunc};
+    vector<pointFunction> pointsFunctions
+    {&Documenter::exampleFunc, nullptr, &Documenter::exampleFunc};
 
     Menu menu(pointNames, pointsFunctions);
 
-    vector<string> pointNames2 = {"Point", "Point2", "Point3"};
-    menu.addPoints(pointNames2, 3);
+    vector<string> pointNames2 = {"Point1", "Point2", "Point3","Z_point","A_Point"};
 
-    menu.addFunctionality(&Documenter::exampleFunc, 1);
+    vector<pointFunction> pointsFunctions2 (pointNames2.size(), &Documenter::exampleFunc);
+
+    menu.addPoints(pointNames2, pointsFunctions2, 4);
+
+    menu.addFunctionality(&Documenter::exampleFunc, 5);
+
+    menu.sortAlpha();
 
     menu.show();
 
-    //void (Documenter::*functionPtr)() = &docer.exampleFunc;
-    //menu.addFunctionality(& Documenter::exampleFunc, 1);
     return 0;
 }
-
-/*
-// sposób wykorzystania
-int main()
-{
-  Dyrektor *director = new Dyrektor();
-  Budowniczy *builder = new BudowniczyJakis();
-  Produkt *product;
-  director.Konstruuj(builder);
-  product = builder.pobierzWynik();
-}
-*/

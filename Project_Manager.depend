@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1581875279 source:d:\zajecia\projekty\22-project_manager\document.cpp
+	"document.h"
+
+1581963819 d:\zajecia\projekty\22-project_manager\document.h
+	<iostream>
+
+1581874912 source:d:\zajecia\projekty\22-project_manager\docsgenerator.cpp
+	"docsgenerator.h"
+
+1581963772 d:\zajecia\projekty\22-project_manager\docsgenerator.h
+	<iostream>
+
+1582388963 source:d:\zajecia\projekty\22-project_manager\documenter.cpp
+	"documenter.h"
+
+1582399848 d:\zajecia\projekty\22-project_manager\documenter.h
+	<iostream>
+
+1581874936 source:d:\zajecia\projekty\22-project_manager\docslist.cpp
+	"docslist.h"
+
+1581965014 d:\zajecia\projekty\22-project_manager\docslist.h
+	<iostream>
+	"docsgenerator.h"
+
+1583672144 source:d:\zajecia\projekty\22-project_manager\main.cpp
+	<iostream>
+	<vector>
+	<string>
+	<typeinfo>
+	"documenter.h"
+	"menu.h"
+
+1583673077 d:\zajecia\projekty\22-project_manager\menu.h
+	<iostream>
+	<vector>
+	<tuple>
+	<string>
+	<stdlib.h>
+	<conio.h>
+	<algorithm>
+	"documenter.h"
+
+1583671260 source:d:\zajecia\projekty\22-project_manager\menu.cpp
+	"menu.h"
+
