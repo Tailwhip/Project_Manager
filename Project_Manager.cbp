@@ -9,29 +9,70 @@
 			<Target title="Debug">
 				<Option output="bin/Debug/Project_Manager" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
+					<Add option="-std=c++14" />
 					<Add option="-g" />
+					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="libwxmsw30u.a" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Project_Manager" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++14" />
+					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="libwxmsw30u.a" />
+					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
+			<Add option="-std=c++14" />
+			<Add option="-pipe" />
+			<Add option="-mthreads" />
+			<Add option="-D__GNUWIN32__" />
+			<Add option="-D__WXMSW__" />
+			<Add option="-DWXUSINGDLL" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add directory="C:/wxWidgets-3.0.4/include" />
+			<Add directory="C:/wxWidgets-3.0.4/lib" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
 		</Compiler>
+		<ResourceCompiler>
+			<Add directory="C:/wxWidgets-3.0.4/include" />
+			<Add directory="C:/wxWidgets-3.0.4/lib" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
+		</ResourceCompiler>
+		<Linker>
+			<Add option="-mthreads" />
+			<Add library="sqlite3" />
+			<Add directory="$(WXWIN)/lib/gcc_dll" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
+		</Linker>
 		<Unit filename="docsgenerator.cpp" />
 		<Unit filename="docsgenerator.h" />
 		<Unit filename="docslist.cpp" />
@@ -40,9 +81,13 @@
 		<Unit filename="document.h" />
 		<Unit filename="documenter.cpp" />
 		<Unit filename="documenter.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="menu.cpp" />
-		<Unit filename="menu.h" />
+		<Unit filename="guilauncher.cpp" />
+		<Unit filename="guilauncher.h" />
+		<Unit filename="guimain.cpp" />
+		<Unit filename="guimain.h" />
+		<Unit filename="guinewproject.cpp" />
+		<Unit filename="guinewproject.h" />
+		<Unit filename="sqlite3.dll" />
 		<Extensions>
 			<code_completion />
 			<envvars />
