@@ -58,7 +58,6 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
         textLabels.push_back(new wxStaticText(newProjPanel, projNameLabelsIDbegin + i,
                                               labelsTxt.at(i),  newProjLabelsPosition, newProjLabelsSize));
     }
-    //newProjList1 = new wxListBox(this, wxID_ANY, wxPoint(10, 110), wxSize(300, 300));
 }
 
 /* // MessageBox pattern
@@ -79,13 +78,31 @@ void guiNewProject::OnBackBtnClicked(wxCommandEvent &evt) {
 }
 
 void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
-    //wxString message;
     for (unsigned i = 0; i < txtCtrlCount; i++) {
             newProjData.push_back(std::string((textControls.at(i)->GetValue()).mb_str()));
-            //message.Printf(wxT("Pole:  %s"), newProjData.at(i));
-            //wxMessageBox(message);
     }
-    docGen.CreateDB(newProjData);
+    DbManager::getInstance().createDb(newProjData);
+
+    std::map<std::string, std::string> docData;
+    docData[DbManager::getInstance().getApprDocNumHead()] = "";
+    docData[DbManager::getInstance().getDocApprDateHead()] = "";
+    docData[DbManager::getInstance().getDocExtHead()] = ".xlsm";
+    docData[DbManager::getInstance().getDocIdHead()] = "NULL";
+    docData[DbManager::getInstance().getDocMadeDateHead()] = "";
+    docData[DbManager::getInstance().getDocNameHead()] = "Lista dokumentów";
+    docData[DbManager::getInstance().getDocPathHead()] = newProjData.at(2);
+    docData[DbManager::getInstance().getDocReviewDateHead()] = "";
+    docData[DbManager::getInstance().getDocRevHead()] = "000";
+    docData[DbManager::getInstance().getProjNumberHead()] =  newProjData.at(1);
+
+    DbManager::getInstance().addDoc(docData);
+
+    DocsGenerator docGenerator;
+
+    GenDocList docList(docData);
+    docGenerator.generateDoc();
+    std::auto_ptr<Document> document = docGenerator.getDocument();
+    document->createDocument();
 }
 
 void guiNewProject::OnClose(wxCloseEvent& evt) {

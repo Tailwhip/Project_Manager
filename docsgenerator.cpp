@@ -1,12 +1,35 @@
 #include "docsgenerator.h"
 
-DocsGenerator::DocsGenerator(){
+DocsGenerator::DocsGenerator() : docsCreator(nullptr) {
 
 }
 
 DocsGenerator::~DocsGenerator(){
 }
 
+void DocsGenerator::setDocumenter(Documenter* docsCreator){
+    this->docsCreator = docsCreator;
+}
+
+std::auto_ptr<Document> DocsGenerator::getDocument(){
+    return docsCreator->getDocument();
+}
+
+void DocsGenerator::generateDoc(){
+    this->docsCreator->setDocName();
+    this->docsCreator->setDocNumber();
+    this->docsCreator->setDocRev();
+    this->docsCreator->setApprDocNum();
+    this->docsCreator->setMadeDate();
+    this->docsCreator->setReviewDate();
+    this->docsCreator->setApprDate();
+    this->docsCreator->setProjNum();
+    this->docsCreator->setDocExt();
+    this->docsCreator->setDocPath();
+    this->docsCreator->createDocument();
+    this->docsCreator->fillDocument();
+}
+/*
 int DocsGenerator::Callback(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
    for(i = 0; i<argc; i++) {
@@ -23,6 +46,7 @@ void DocsGenerator::CreateDB(std::vector<std::string> &projectData) {
       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(database));
     else
       fprintf(stdout, "Opened database successfully\n");
+
     // Prepares PROJECTS table creation query
     sql = "CREATE TABLE PROJECTS("  \
       "PROJ_ID                           INT PRIMARY KEY    NOT NULL," \
@@ -58,3 +82,4 @@ void DocsGenerator::CreateDB(std::vector<std::string> &projectData) {
 
     sqlite3_close(database);
 }
+*/

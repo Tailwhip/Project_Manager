@@ -2,10 +2,13 @@
 #define GUINEWPROJECT_H
 
 #include <iostream>
-#include "wx/wx.h"
-#include "docsgenerator.h"
 #include <vector>
 #include <string>
+#include "wx/wx.h"
+#include "docsgenerator.h"
+#include "gendoclist.h"
+#include "dbmanager.h"
+
 
 class guiNewProject : public wxFrame
 {
@@ -65,8 +68,6 @@ private:
     std::vector<wxStaticText*> textLabels;
     std::vector<char*> labelsTxt;
 
-    // docsgenerator object
-    DocsGenerator docGen;
     std::vector<std::string> newProjData;
     // std::string const char*
     // gui objects functions

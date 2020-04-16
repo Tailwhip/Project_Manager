@@ -1,11 +1,17 @@
 #include "documenter.h"
 
-void Documenter::exampleFunc(){
-    cout << "FUNCTION! " << endl;
-    Documenter doc;
-    doc.anotherFunction();
+Documenter::Documenter(){
+
 }
 
-void Documenter::anotherFunction(){
-    cout << "ANOTHER FUNCTION! " << endl;
+Documenter::~Documenter(){
+
+}
+
+std::auto_ptr<Document> Documenter::getDocument(){
+    return document;
+}
+
+void Documenter::initDoc(){
+    return document.reset(new Document);
 }

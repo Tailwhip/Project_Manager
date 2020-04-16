@@ -3,76 +3,128 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="Project_Manager" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
+		<Option pch_mode="0" />
+		<Option compiler="copy_of_gnu_gcc_compiler_x64" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Project_Manager" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="0" />
-				<Option compiler="gcc" />
+				<Option type="1" />
+				<Option compiler="copy_of_gnu_gcc_compiler_x64" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
-					<Add option="-std=c++14" />
 					<Add option="-g" />
-					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll/mswu" />
+					<Add directory="C:/Program Files/boost/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll/mswu" />
+					<Add directory="C:/Program Files/boost/include" />
 				</ResourceCompiler>
 				<Linker>
-					<Add library="libwxmsw30u.a" />
+					<Add library="libwxmsw31u_core.a" />
+					<Add library="libwxbase31u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll" />
+					<Add directory="C:/Program Files/boost/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Project_Manager" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="0" />
-				<Option compiler="gcc" />
+				<Option type="1" />
+				<Option compiler="copy_of_gnu_gcc_compiler_x64" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++14" />
-					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll/mswu" />
+					<Add directory="C:/Program Files/boost/include" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll/mswu" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll/mswu" />
+					<Add directory="C:/Program Files/boost/include" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="libwxmsw30u.a" />
-					<Add directory="C:/wxWidgets-3.0.4/lib/gcc_dll" />
+					<Add library="libwxmsw31u_core.a" />
+					<Add library="libwxbase31u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libboost_atomic-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_chrono-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_container-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_context-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_contract-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_coroutine-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_date_time-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_exception-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_fiber-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_filesystem-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_graph-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_iostreams-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_locale-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_log_setup-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_log-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_c99f-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_c99l-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_c99-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_tr1f-mgw81-mt-d-x64-1_72.a" />
+					<Add library="libboost_math_tr1f-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_tr1l-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_math_tr1-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_prg_exec_monitor-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_program_options-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_python37-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_random-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_regex-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_serialization-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_stacktrace_basic-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_stacktrace_noop-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_system-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_test_exec_monitor-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_thread-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_timer-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_type_erasure-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_unit_test_framework-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_wave-mgw81-mt-x64-1_72.a" />
+					<Add library="libboost_wserialization-mgw81-mt-x64-1_72.a" />
+					<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/lib/gcc_dll" />
+					<Add directory="C:/Program Files/boost/lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++14" />
+			<Add option="-m64" />
 			<Add option="-pipe" />
 			<Add option="-mthreads" />
+			<Add option="-Winvalid-pch" />
+			<Add option="-include wx_pch.h" />
 			<Add option="-D__GNUWIN32__" />
 			<Add option="-D__WXMSW__" />
 			<Add option="-DWXUSINGDLL" />
 			<Add option="-DwxUSE_UNICODE" />
-			<Add directory="C:/wxWidgets-3.0.4/include" />
-			<Add directory="C:/wxWidgets-3.0.4/lib" />
+			<Add option="-DWX_PRECOMP" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/include" />
 			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
-			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
+			<Add directory="C:/Program Files/boost/include" />
 		</Compiler>
 		<ResourceCompiler>
-			<Add directory="C:/wxWidgets-3.0.4/include" />
-			<Add directory="C:/wxWidgets-3.0.4/lib" />
+			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/wxWidgets-3.1.3/include" />
 			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
-			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
+			<Add directory="C:/Program Files/boost/include" />
 		</ResourceCompiler>
 		<Linker>
+			<Add option="-m64" />
 			<Add option="-mthreads" />
 			<Add library="sqlite3" />
-			<Add directory="$(WXWIN)/lib/gcc_dll" />
-			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies" />
 			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/lib" />
-			<Add directory="D:/Zajecia/Projekty/22-Project_Manager/Project_Manager/dependancies/sqlite3/include" />
+			<Add directory="C:/Program Files/boost/lib" />
 		</Linker>
+		<Unit filename="dbmanager.cpp" />
+		<Unit filename="dbmanager.h" />
 		<Unit filename="docsgenerator.cpp" />
 		<Unit filename="docsgenerator.h" />
 		<Unit filename="docslist.cpp" />
@@ -81,17 +133,23 @@
 		<Unit filename="document.h" />
 		<Unit filename="documenter.cpp" />
 		<Unit filename="documenter.h" />
+		<Unit filename="gendoclist.cpp" />
+		<Unit filename="gendoclist.h" />
 		<Unit filename="guilauncher.cpp" />
 		<Unit filename="guilauncher.h" />
 		<Unit filename="guimain.cpp" />
 		<Unit filename="guimain.h" />
 		<Unit filename="guinewproject.cpp" />
 		<Unit filename="guinewproject.h" />
-		<Unit filename="sqlite3.dll" />
+		<Unit filename="wx_pch.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
