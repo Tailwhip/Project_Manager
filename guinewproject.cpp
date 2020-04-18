@@ -81,7 +81,6 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     for (unsigned i = 0; i < txtCtrlCount; i++) {
             newProjData.push_back(std::string((textControls.at(i)->GetValue()).mb_str()));
     }
-    DbManager::getInstance().createDb(newProjData);
 
     std::map<std::string, std::string> docData;
     docData[DbManager::getInstance().getApprDocNumHead()] = "";
@@ -95,14 +94,21 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     docData[DbManager::getInstance().getDocRevHead()] = "000";
     docData[DbManager::getInstance().getProjNumberHead()] =  newProjData.at(1);
 
+    DbManager::getInstance().createDb(newProjData);
+//    DbManager::getInstance().openDb();
+
     DbManager::getInstance().addDoc(docData);
 
+   // DbManager::getInstance().openDb();
+
+/*
     DocsGenerator docGenerator;
 
     GenDocList docList(docData);
     docGenerator.generateDoc();
     std::auto_ptr<Document> document = docGenerator.getDocument();
     document->createDocument();
+*/
 }
 
 void guiNewProject::OnClose(wxCloseEvent& evt) {

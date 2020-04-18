@@ -4,7 +4,6 @@ DbManager DbManager::instance;
 
 DbManager::DbManager(){
     dbPath = "data/projects.db";
-    openDb();
 }
 
 DbManager::~DbManager(){
@@ -12,58 +11,62 @@ DbManager::~DbManager(){
 }
 
 void DbManager::createDb(std::vector<std::string> &projectData) {
+    if (!boost::filesystem::exists(dbPath)) {
+        std::cout << "Creating Database ..." << std::endl;
+        rc = sqlite3_open(dbPath.c_str(), &database);
 
-    if ( !boost::filesystem::exists(dbPath.c_str())) {
-        std::cout << "Can't find my file!" << std::endl;
-        return;
+        sql = "CREATE TABLE PROJECTS("
+        + headProjId + " INTEGER PRIMARY KEY,"
+        + headProjName + " TEXT,"
+        + headProjNumber + " TEXT,"
+        + headProjPath + " TEXT);";
+
+        rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
+
+        sql = "CREATE TABLE DOCUMENTS("
+        + headDocId + " INTEGER PRIMARY KEY,"
+        + headDocName + " TEXT,"
+        + headDocNumber + " TEXT,"
+        + headDocRevision + " TEXT,"
+        + headApprDocNumber + " TEXT,"
+        + headDocMadeDate + " TEXT,"
+        + headDocReviewDate + " TEXT,"
+        + headDocApprDate + " TEXT,"
+        + headProjNumber + " TEXT,"
+        + headDocExt + " TEXT,"
+        + headDocPath + " TEXT);";
+
+        rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
+
+       if (rc != SQLITE_OK) {
+          fprintf(stderr, "SQL error: %s\n", zErrMsg);
+          sqlite3_free(zErrMsg);
+       } else fprintf(stdout, "Database created successfully\n");
+    } else {
+         std::cout << "Database already exists!" << std::endl;
+         return;
     }
-    rc = sqlite3_open(dbPath.c_str(), &database);
-
-    sql = "CREATE TABLE PROJECTS("
-    + headProjId + "INTEGER PRIMARY KEY,"
-    + headProjName + "TEXT,"
-    + headProjNumber + "TEXT,"
-    + headProjPath + "TEXT);";
-
-    rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
-
-    sql = "CREATE TABLE DOCUMENTS("
-    + headDocId + "INTEGER PRIMARY KEY,"
-    + headDocName + "TEXT,"
-    + headDocNumber + "TEXT,"
-    + headDocRevision + "TEXT,"
-    + headApprDocNumber + "TEXT,"
-    + headDocMadeDate + "TEXT,"
-    + headDocReviewDate + "TEXT,"
-    + headDocApprDate + "TEXT,"
-    + headProjNumber + "TEXT,"
-    + headDocExt + "TEXT,"
-    + headDocPath + "TEXT);";
-
-    rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
-
-   if (rc != SQLITE_OK) {
-      fprintf(stderr, "SQL error: %s\n", zErrMsg);
-      sqlite3_free(zErrMsg);
-   } else
-      fprintf(stdout, "Table created successfully\n");
 }
 
 void DbManager::openDb() {
-    rc = sqlite3_open("data/projects.db", &database);
+    if (boost::filesystem::exists(dbPath)) {
+        rc = sqlite3_open(dbPath.c_str(), &database);
+        if (rc)
+          fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(database));
+        else
+          fprintf(stdout, "Opened database successfully\n");
 
-    if (rc)
-      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(database));
-    else
-      fprintf(stdout, "Opened database successfully\n");
-
-    sql = "SELECT " + headDocId + " FROM PROJECTS";
-    rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
-    docId = std::stoi(dataBuffer["0"]);
-    std::cout << "DocID: " << docId << std::endl;
-    sql = "SELECT " + headProjId + " FROM PROJECTS";
-    rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
-    projId = std::stoi(dataBuffer["0"]);
+        sql = "SELECT * FROM DOCUMENTS";
+        rc = sqlite3_exec(database, sql.c_str(), readCallback, NULL, &zErrMsg);
+        std::cout << "I am!" << std::endl;
+        //docId = std::stoi(dataBuffer["0"]);
+        //std::cout << "DocID: " << dataBuffer["0"] << std::endl;
+        sql = "SELECT * FROM PROJECTS";
+        rc = sqlite3_exec(database, sql.c_str(), readCallback, NULL, &zErrMsg);
+        //projId = std::stoi(dataBuffer["0"]);
+    } else {
+        std::cout << "There's no database to open. Create one first!" << std::endl;
+    }
 }
 
 void DbManager::closeDb() {
@@ -72,7 +75,8 @@ void DbManager::closeDb() {
 
 void DbManager::addDoc(std::map<std::string, std::string> & docData) {
     docId++;
-    sql = "INSERT INTO DOCUMENTS("
+    rc = sqlite3_open(dbPath.c_str(), &database);
+    sql = "INSERT INTO DOCUMENTS ("
     + headDocId + ","
     + headDocName + ","
     + headDocNumber + ","
@@ -83,18 +87,18 @@ void DbManager::addDoc(std::map<std::string, std::string> & docData) {
     + headDocApprDate + ","
     + headProjNumber + ","
     + headDocExt + ","
-    + headDocPath + ") VALUES ("
-    + std::to_string(docId) + ","
-    + docData[headDocName] + ","
-    + docData[headDocNumber] + ","
-    + docData[headDocRevision] + ","
-    + docData[headApprDocNumber] + ","
-    + docData[headDocMadeDate] + ","
-    + docData[headDocReviewDate] + ","
-    + docData[headDocApprDate] + ","
-    + docData[headProjNumber] + ","
-    + docData[headDocExt] + ","
-    + docData[headDocPath] + ");";
+    + headDocPath + ") VALUES ('"
+    + std::to_string(docId) + "','"
+    + docData[headDocName] + "','"
+    + docData[headDocNumber] + "','"
+    + docData[headDocRevision] + "','"
+    + docData[headApprDocNumber] + "','"
+    + docData[headDocMadeDate] + "','"
+    + docData[headDocReviewDate] + "','"
+    + docData[headDocApprDate] + "','"
+    + docData[headProjNumber] + "','"
+    + docData[headDocExt] + "','"
+    + docData[headDocPath] + "');";
 
     rc = sqlite3_exec(database, sql.c_str(), writeCallback, NULL, &zErrMsg);
 
@@ -110,7 +114,7 @@ void DbManager::addProj(std::map<std::string, std::string> & projData) {
     + headProjName + ","
     + headProjNumber + ","
     + headProjPath + ")"
-    ") VALUES ( '"
+    ") VALUES ("
     + std::to_string(projId) + ","
     + projData[headProjName] + ","
     + projData[headProjNumber] + ","
@@ -184,9 +188,17 @@ int DbManager::writeCallback(void *NotUsed, int argc, char **argv, char **azColN
 int DbManager::readCallback(void *data, int argc, char **argv, char **azColName) {
     int i;
     fprintf(stderr, "%s: ", (const char*)data);
+    std::cout << "argc: " << argc << std::endl;
     for(i = 0; i<argc; i++){
         DbManager::getInstance().dataBuffer[azColName[i]] = argv[i]; // cast??
+        std::cout << "azColName: " << azColName[i] << std::endl;
+        std::cout << "argv: " << argv[i] << std::endl;
     }
+
+     for(i = 0; i<argc; i++){
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+   }
+
     printf("\n");
     return 0;
 }

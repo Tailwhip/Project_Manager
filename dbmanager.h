@@ -35,6 +35,7 @@ public:
     std::string getDocExtHead();
     std::string getDocPathHead();
     std::string getProjNumberHead();
+
 private:
     static int writeCallback(void *, int, char **, char **);
     static int readCallback(void *, int, char **, char **);
