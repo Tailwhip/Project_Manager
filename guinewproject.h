@@ -68,7 +68,6 @@ private:
     std::vector<wxStaticText*> textLabels;
     std::vector<char*> labelsTxt;
 
-    std::vector<std::string> newProjData;
     // std::string const char*
     // gui objects functions
     void OnClose(wxCloseEvent& evt);

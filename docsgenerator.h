@@ -14,7 +14,7 @@
 class DocsGenerator // Director
 {
 private:
-    Documenter* docsCreator;
+    Documenter* documenter;
 public:
     DocsGenerator();
     ~DocsGenerator();
@@ -23,13 +23,6 @@ public:
     std::auto_ptr<Document> getDocument();
     void generateDoc();
 private:
-    /*
-    static int Callback(void *, int , char **, char **);
-    sqlite3 *database;
-    char *zErrMsg = 0;
-    int rc;
-    std::string sql;
-    */
 };
 
 #endif // DOCSGENERATOR_H

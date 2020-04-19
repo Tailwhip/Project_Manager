@@ -1,31 +1,34 @@
 #include "docsgenerator.h"
 
-DocsGenerator::DocsGenerator() : docsCreator(nullptr) {
+DocsGenerator::DocsGenerator() : documenter(NULL) {
 
 }
 
 DocsGenerator::~DocsGenerator(){
 }
 
-void DocsGenerator::setDocumenter(Documenter* docsCreator){
-    this->docsCreator = docsCreator;
+void DocsGenerator::setDocumenter(Documenter* documenter){
+    this->documenter = documenter;
 }
 
 std::auto_ptr<Document> DocsGenerator::getDocument(){
-    return docsCreator->getDocument();
+    return documenter->getDocument();
 }
 
 void DocsGenerator::generateDoc(){
-    this->docsCreator->setDocName();
-    this->docsCreator->setDocNumber();
-    this->docsCreator->setDocRev();
-    this->docsCreator->setApprDocNum();
-    this->docsCreator->setMadeDate();
-    this->docsCreator->setReviewDate();
-    this->docsCreator->setApprDate();
-    this->docsCreator->setProjNum();
-    this->docsCreator->setDocExt();
-    this->docsCreator->setDocPath();
-    this->docsCreator->createDocument();
-    this->docsCreator->fillDocument();
+
+    this->documenter->initDoc();
+
+    this->documenter->setDocName();
+    this->documenter->setDocNumber();
+    this->documenter->setDocRev();
+    this->documenter->setApprDocNum();
+    this->documenter->setMadeDate();
+    this->documenter->setReviewDate();
+    this->documenter->setApprDate();
+    this->documenter->setProjNum();
+    this->documenter->setDocExt();
+    this->documenter->setDocPath();
+    this->documenter->createDocument();
+    this->documenter->fillDocument();
 }

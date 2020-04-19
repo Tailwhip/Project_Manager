@@ -7,9 +7,15 @@
 #include <memory>
 #include "sqlite3.h"
 #include <boost/filesystem.hpp>
+#include <boost/foreach.hpp>
+#include <stdexcept>
 
 class DbManager // Singleton
 {
+
+typedef std::map<std::string, std::string> map_str;
+typedef std::pair<std::string, std::string> pair_str;
+
 private:
     DbManager();
     DbManager(const DbManager &);
@@ -18,11 +24,11 @@ private:
 public:
     static DbManager& getInstance();
     static DbManager instance;
-    void createDb(std::vector<std::string> &);
+    void createDb();
     void openDb();
     void closeDb();
-    void addProj(std::map<std::string, std::string> &);
-    void addDoc(std::map<std::string, std::string> &);
+    void addProj(map_str &);
+    void addDoc(map_str &);
 
     std::string getDocIdHead();
     std::string getDocNameHead();
@@ -34,12 +40,17 @@ public:
     std::string getDocApprDateHead();
     std::string getDocExtHead();
     std::string getDocPathHead();
+
+    std::string getProjIdHead();
+    std::string getProjNameHead();
     std::string getProjNumberHead();
+    std::string getProjPathHead();
 
 private:
     static int writeCallback(void *, int, char **, char **);
     static int readCallback(void *, int, char **, char **);
-    void readFromDb();
+    unsigned bufferMax(const char* = "first");
+
     sqlite3 *database;
     char *zErrMsg = 0;
     int rc;
@@ -47,7 +58,7 @@ private:
     unsigned projId = 0;
     unsigned docId = 0;
     std::string dbPath;
-    std::map<std::string, std::string> dataBuffer;
+    map_str dataBuffer;
 
     std::string headDocId = "DOC_ID";
     std::string headDocName = "DOC_NAME";

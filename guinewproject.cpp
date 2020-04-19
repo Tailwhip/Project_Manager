@@ -78,9 +78,16 @@ void guiNewProject::OnBackBtnClicked(wxCommandEvent &evt) {
 }
 
 void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
-    for (unsigned i = 0; i < txtCtrlCount; i++) {
-            newProjData.push_back(std::string((textControls.at(i)->GetValue()).mb_str()));
-    }
+
+    DbManager::getInstance().createDb();
+
+    std::map<std::string, std::string> newProjData;
+    newProjData[DbManager::getInstance().getProjIdHead()] = "NULL";
+    newProjData[DbManager::getInstance().getProjNameHead()] = (textControls.at(0)->GetValue()).mb_str();
+    newProjData[DbManager::getInstance().getProjNumberHead()] = (textControls.at(1)->GetValue()).mb_str();
+    newProjData[DbManager::getInstance().getProjPathHead()] = (textControls.at(2)->GetValue()).mb_str();
+
+    DbManager::getInstance().addProj(newProjData);
 
     std::map<std::string, std::string> docData;
     docData[DbManager::getInstance().getApprDocNumHead()] = "";
@@ -89,23 +96,19 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     docData[DbManager::getInstance().getDocIdHead()] = "NULL";
     docData[DbManager::getInstance().getDocMadeDateHead()] = "";
     docData[DbManager::getInstance().getDocNameHead()] = "Lista dokumentów";
-    docData[DbManager::getInstance().getDocPathHead()] = newProjData.at(2);
+    docData[DbManager::getInstance().getDocPathHead()] = newProjData[DbManager::getInstance().getProjPathHead()];
     docData[DbManager::getInstance().getDocReviewDateHead()] = "";
     docData[DbManager::getInstance().getDocRevHead()] = "000";
-    docData[DbManager::getInstance().getProjNumberHead()] =  newProjData.at(1);
-
-    DbManager::getInstance().createDb(newProjData);
-//    DbManager::getInstance().openDb();
+    docData[DbManager::getInstance().getProjNumberHead()] =  newProjData[DbManager::getInstance().getProjNumberHead()];
 
     DbManager::getInstance().addDoc(docData);
+    DbManager::getInstance().openDb();
 
-   // DbManager::getInstance().openDb();
-
-/*
     DocsGenerator docGenerator;
 
     GenDocList docList(docData);
     docGenerator.generateDoc();
+/*
     std::auto_ptr<Document> document = docGenerator.getDocument();
     document->createDocument();
 */

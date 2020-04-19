@@ -2660,7 +2660,7 @@
 1587228616 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
 	"docsgenerator.h"
 
-1587228602 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+1587315778 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -2694,7 +2694,7 @@
 	"wx/wx.h"
 	"guinewproject.h"
 
-1586799638 d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.h
+1587314706 d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.h
 	<iostream>
 	<vector>
 	<string>
@@ -2706,7 +2706,7 @@
 1586370544 source:d:\zajecia\projekty\22-project_manager\project_manager\guimain.cpp
 	"guimain.h"
 
-1587234880 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
+1587315440 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
 	"guinewproject.h"
 
 1586293650 c:\program files\boost\include\boost\chrono\chrono.hpp
@@ -16978,15 +16978,17 @@
 	"documenter.h"
 	"dbmanager.h"
 
-1587234767 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
+1587305854 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
 	<iostream>
 	<string>
 	<map>
 	<memory>
 	"sqlite3.h"
 	<boost/filesystem.hpp>
+	<boost/foreach.hpp>
+	<stdexcept>
 
-1587235125 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
+1587315047 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
 	"dbmanager.h"
 
 1586293646 c:\program files\boost\include\boost\filesystem.hpp
