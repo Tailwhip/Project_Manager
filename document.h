@@ -22,16 +22,16 @@ public:
     std::string getDocExt();
     std::string getDocPath();
 
-    void setDocName(std::string);
-    void setDocNum(std::string);
-    void setDocRev(std::string);
-    void setApprDocNum(std::string);
-    void setMadeDate(std::string);
-    void setReviewDate(std::string);
-    void setApprDate(std::string);
-    void setProjNum(std::string);
-    void setDocExt(std::string);
-    void setDocPath(std::string);
+    void setDocName(const std::string&);
+    void setDocNum(const std::string&);
+    void setDocRev(const std::string&);
+    void setApprDocNum(const std::string&);
+    void setMadeDate(const std::string&);
+    void setReviewDate(const std::string&);
+    void setApprDate(const std::string&);
+    void setProjNum(const std::string&);
+    void setDocExt(const std::string&);
+    void setDocPath(const std::string&);
     void createDocument();
     void fillDocument();
 

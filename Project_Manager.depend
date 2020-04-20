@@ -2641,26 +2641,26 @@
 
 1572201702 d:\zajecia\projekty\22-project_manager\project_manager\dependancies\wxwidgets-3.1.3\include\wx\qt\mdi.h
 
-1586804486 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
+1587406106 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
 	"document.h"
 
-1586804466 d:\zajecia\projekty\22-project_manager\project_manager\document.h
+1587406419 d:\zajecia\projekty\22-project_manager\project_manager\document.h
 	<iostream>
 	<string>
 
-1586761412 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
+1587408791 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
 	"documenter.h"
 
-1586805394 d:\zajecia\projekty\22-project_manager\project_manager\documenter.h
+1587406767 d:\zajecia\projekty\22-project_manager\project_manager\documenter.h
 	<iostream>
 	<string>
 	<memory>
 	"document.h"
 
-1587228616 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
+1587410003 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
 	"docsgenerator.h"
 
-1587315778 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+1587410007 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -2706,7 +2706,7 @@
 1586370544 source:d:\zajecia\projekty\22-project_manager\project_manager\guimain.cpp
 	"guimain.h"
 
-1587315440 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
+1587408687 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
 	"guinewproject.h"
 
 1586293650 c:\program files\boost\include\boost\chrono\chrono.hpp
@@ -16968,10 +16968,10 @@
 	<boost/preprocessor/repetition/enum_params.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
 
-1586811138 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
+1587407310 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
 	"gendoclist.h"
 
-1586811123 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
+1587407173 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
 	<iostream>
 	<string>
 	<map>

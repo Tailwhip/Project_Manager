@@ -13,5 +13,5 @@ std::auto_ptr<Document> Documenter::getDocument(){
 }
 
 void Documenter::initDoc(){
-    return document.reset(new Document);
+    document.reset(new Document);
 }

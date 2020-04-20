@@ -9,43 +9,43 @@ GenDocList::~GenDocList(){
 }
 
 void GenDocList::setDocName(){
-    document->setDocName(docData.at(DbManager::getInstance().getDocNameHead()));
+    document->setDocName(docData[DbManager::getInstance().getDocNameHead()]);
 }
 
 void GenDocList::setDocNumber(){
-    document->setDocNum(docData.at(DbManager::getInstance().getDocNumHead()));
+    document->setDocNum(docData[DbManager::getInstance().getDocNumHead()]);
 }
 
 void GenDocList::setDocRev(){
-    document->setDocRev(docData.at(DbManager::getInstance().getDocRevHead()));
+    document->setDocRev(docData[DbManager::getInstance().getDocRevHead()]);
 }
 
 void GenDocList::setApprDocNum(){
-    document->setApprDocNum(docData.at(DbManager::getInstance().getApprDocNumHead()));
+    document->setApprDocNum(docData[DbManager::getInstance().getApprDocNumHead()]);
 }
 
 void GenDocList::setMadeDate(){
-    document->setMadeDate(docData.at(DbManager::getInstance().getDocMadeDateHead()));
+    document->setMadeDate(docData[DbManager::getInstance().getDocMadeDateHead()]);
 }
 
 void GenDocList::setReviewDate(){
-    document->setReviewDate(docData.at(DbManager::getInstance().getDocReviewDateHead()));
+    document->setReviewDate(docData[DbManager::getInstance().getDocReviewDateHead()]);
 }
 
 void GenDocList::setApprDate(){
-    document->setApprDate(docData.at(DbManager::getInstance().getDocApprDateHead()));
+    document->setApprDate(docData[DbManager::getInstance().getDocApprDateHead()]);
 }
 
 void GenDocList::setProjNum(){
-    document->setProjNum(docData.at(DbManager::getInstance().getProjNumberHead()));
+    document->setProjNum(docData[DbManager::getInstance().getProjNumberHead()]);
 }
 
 void GenDocList::setDocExt(){
-    document->setDocExt(docData.at(DbManager::getInstance().getDocExtHead()));
+    document->setDocExt(docData[DbManager::getInstance().getDocExtHead()]);
 }
 
 void GenDocList::setDocPath(){
-    document->setDocPath(docData.at(DbManager::getInstance().getDocPathHead()));
+    document->setDocPath(docData[DbManager::getInstance().getDocPathHead()]);
 }
 
 void GenDocList::createDocument(){

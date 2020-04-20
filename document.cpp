@@ -48,43 +48,43 @@ std::string Document::getDocPath(){
     return docPath;
 }
 
-void Document::setDocName(std::string docName){
+void Document::setDocName(const std::string& docName){
     this->docName = docName;
 }
 
-void Document::setDocNum(std::string docNum){
+void Document::setDocNum(const std::string& docNum){
     this->docNum = docNum;
 }
 
-void Document::setDocRev(std::string docRev){
+void Document::setDocRev(const std::string& docRev){
     this->docRev = docRev;
 }
 
-void Document::setApprDocNum(std::string apprDocNum){
+void Document::setApprDocNum(const std::string& apprDocNum){
     this->apprDocNum = apprDocNum;
 }
 
-void Document::setMadeDate(std::string reviewDate){
+void Document::setMadeDate(const std::string& reviewDate){
     this->reviewDate = reviewDate;
 }
 
-void Document::setReviewDate(std::string madeDate){
+void Document::setReviewDate(const std::string& madeDate){
     this->madeDate = madeDate;
 }
 
-void Document::setApprDate(std::string apprDate){
+void Document::setApprDate(const std::string& apprDate){
     this->apprDate = apprDate;
 }
 
-void Document::setDocExt(std::string docExt){
+void Document::setDocExt(const std::string& docExt){
     this->docExt = docExt;
 }
 
-void Document::setProjNum(std::string projNum){
+void Document::setProjNum(const std::string& projNum){
     this->projNum = projNum;
 }
 
-void Document::setDocPath(std::string docPath){
+void Document::setDocPath(const std::string& docPath){
     this->docPath = docPath;
 }
 

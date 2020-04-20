@@ -17,7 +17,7 @@ std::auto_ptr<Document> DocsGenerator::getDocument(){
 
 void DocsGenerator::generateDoc(){
 
-    this->documenter->initDoc();
+    //this->documenter->initDoc();
 
     this->documenter->setDocName();
     this->documenter->setDocNumber();

@@ -8,7 +8,7 @@
 #include "dbmanager.h"
 
 
-class GenDocList : public Documenter // Documents List Builder
+class GenDocList : public Documenter // (Concrete) Documents List Builder
 {
 public:
     GenDocList(std::map<std::string, std::string>&);
