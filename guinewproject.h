@@ -8,6 +8,7 @@
 #include "docsgenerator.h"
 #include "gendoclist.h"
 #include "dbmanager.h"
+#include "pmutilities.h"
 
 
 class guiNewProject : public wxFrame

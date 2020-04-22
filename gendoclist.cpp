@@ -1,6 +1,6 @@
 #include "gendoclist.h"
 
-GenDocList::GenDocList(std::map<std::string, std::string>& docData) : Documenter(){
+GenDocList::GenDocList(PmUtilities::map_str &docData) : Documenter(){
     this->docData = docData;
 }
 
@@ -48,10 +48,32 @@ void GenDocList::setDocPath(){
     document->setDocPath(docData[DbManager::getInstance().getDocPathHead()]);
 }
 
-void GenDocList::createDocument(){
-    document->createDocument();
+void GenDocList::setDocData(){
+    document->setDocData(docData);
+}
+
+void GenDocList::createFromTemp(){
+    std::cout << "Creating " <<
+    (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
+    " at " <<
+    (*document->getDocData())[DbManager::getInstance().getDocPathHead()] <<
+    " path" << std::endl;
+
+    DbManager::getInstance().addDoc(*(document->getDocData()));
+
+
+    boost::filesystem::path tempPath = PmUtilities::Path::toTemplates;
+    tempPath += "/xlstemplate.xlsm";
+    std::cout << "Path: " << tempPath << std::endl;
+    boost::filesystem::copy_file(tempPath,
+    (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+
 }
 
 void GenDocList::fillDocument(){
-    document->fillDocument();
+    std::cout << "Filling the " <<
+    (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
+    " document" << std::endl;
+
+
 }

@@ -77,7 +77,7 @@ void DbManager::closeDb() {
     sqlite3_close(database);
 }
 
-void DbManager::addDoc(map_str & docData) {
+void DbManager::addDoc(PmUtilities::map_str & docData) {
     docId++;
     rc = sqlite3_open(dbPath.c_str(), &database);
     sql = "INSERT INTO DOCUMENTS ("
@@ -111,7 +111,7 @@ void DbManager::addDoc(map_str & docData) {
     wxMessageBox(message);
 }
 
-void DbManager::addProj(map_str & projData) {
+void DbManager::addProj(PmUtilities::map_str &projData) {
     projId++;
     rc = sqlite3_open(dbPath.c_str(), &database);
     sql = "INSERT INTO PROJECTS ("
@@ -216,13 +216,13 @@ unsigned DbManager::bufferMax(const char* position){
     unsigned compVar = 0;
     try {
         if (position == "first") {
-        BOOST_FOREACH(map_str::value_type &i, dataBuffer){
+        BOOST_FOREACH(PmUtilities::map_str::value_type &i, dataBuffer){
             compVar = std::stoi(i.first);
             if (compVar > result) result = compVar;
         }
         return result;
         } else if (position == "second") {
-        BOOST_FOREACH(map_str::value_type &i, dataBuffer){
+        BOOST_FOREACH(PmUtilities::map_str::value_type &i, dataBuffer){
             compVar = std::stoi(i.second);
             if (compVar > result) result = compVar;
         }
@@ -230,9 +230,11 @@ unsigned DbManager::bufferMax(const char* position){
         } else std::cout<<"Wrong max function argument!" << std::endl;
         return 0;
     } catch (std::invalid_argument& e){
-        std::cout<<"Wrong value for comparison!" << std::endl;
+        throw std::invalid_argument("Wrong value for comparison!");
+        //std::cout<<"Wrong value for comparison!" << std::endl;
     }
       catch (std::out_of_range& e){
-        std::cout<<"Comparison value out of range!" << std::endl;
+;        throw std::out_of_range("Comparison value out of range!");
+        //std::cout<<"Comparison value out of range!" << std::endl;
     }
 }

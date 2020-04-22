@@ -2641,26 +2641,32 @@
 
 1572201702 d:\zajecia\projekty\22-project_manager\project_manager\dependancies\wxwidgets-3.1.3\include\wx\qt\mdi.h
 
-1587406106 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
+1587578129 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
 	"document.h"
 
-1587406419 d:\zajecia\projekty\22-project_manager\project_manager\document.h
+1587578273 d:\zajecia\projekty\22-project_manager\project_manager\document.h
 	<iostream>
 	<string>
+	<map>
+	"dbmanager.h"
+	"pmutilities.h"
 
-1587408791 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
+1587410272 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
 	"documenter.h"
 
-1587406767 d:\zajecia\projekty\22-project_manager\project_manager\documenter.h
+1587574646 d:\zajecia\projekty\22-project_manager\project_manager\documenter.h
 	<iostream>
 	<string>
 	<memory>
 	"document.h"
+	"pmutilities.h"
 
-1587410003 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
+1587576400 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
 	"docsgenerator.h"
 
-1587410007 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+1587574645 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+	<exception>
+	<boost/exception/all.hpp>
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -2670,6 +2676,7 @@
 	"sqlite3.h"
 	"wx/wx.h"
 	"documenter.h"
+	"pmutilities.h"
 
 1586370544 d:\zajecia\projekty\22-project_manager\project_manager\dependancies\sqlite3\include\sqlite3.h
 	<stdarg.h>
@@ -2694,7 +2701,7 @@
 	"wx/wx.h"
 	"guinewproject.h"
 
-1587314706 d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.h
+1587574644 d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.h
 	<iostream>
 	<vector>
 	<string>
@@ -2702,11 +2709,12 @@
 	"docsgenerator.h"
 	"gendoclist.h"
 	"dbmanager.h"
+	"pmutilities.h"
 
 1586370544 source:d:\zajecia\projekty\22-project_manager\project_manager\guimain.cpp
 	"guimain.h"
 
-1587408687 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
+1587576263 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
 	"guinewproject.h"
 
 1586293650 c:\program files\boost\include\boost\chrono\chrono.hpp
@@ -16968,17 +16976,20 @@
 	<boost/preprocessor/repetition/enum_params.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
 
-1587407310 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
+1587581717 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
 	"gendoclist.h"
 
-1587407173 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
+1587578349 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
 	<iostream>
 	<string>
 	<map>
+	<boost/filesystem.hpp>
+	<boost/foreach.hpp>
 	"documenter.h"
 	"dbmanager.h"
+	"pmutilities.h"
 
-1587305854 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
+1587574754 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
 	<iostream>
 	<string>
 	<map>
@@ -16987,8 +16998,9 @@
 	<boost/filesystem.hpp>
 	<boost/foreach.hpp>
 	<stdexcept>
+	"pmutilities.h"
 
-1587315047 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
+1587574885 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
 	"dbmanager.h"
 
 1586293646 c:\program files\boost\include\boost\filesystem.hpp
@@ -19959,4 +19971,177 @@
 	<fstream>
 	<boost/config/abi_prefix.hpp>
 	<boost/config/abi_suffix.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\all.hpp
+	<boost/config.hpp>
+	<boost/exception/diagnostic_information.hpp>
+	<boost/exception/error_info.hpp>
+	<boost/exception/exception.hpp>
+	<boost/exception/get_error_info.hpp>
+	<boost/exception/info.hpp>
+	<boost/exception/info_tuple.hpp>
+	<boost/exception/errinfo_api_function.hpp>
+	<boost/exception/errinfo_at_line.hpp>
+	<boost/exception/errinfo_errno.hpp>
+	<boost/exception/errinfo_file_handle.hpp>
+	<boost/exception/errinfo_file_name.hpp>
+	<boost/exception/errinfo_file_open_mode.hpp>
+	<boost/exception/errinfo_type_info_name.hpp>
+	<boost/exception/errinfo_nested_exception.hpp>
+	<boost/exception_ptr.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\diagnostic_information.hpp
+	<boost/config.hpp>
+	<boost/exception/get_error_info.hpp>
+	<boost/exception/info.hpp>
+	<boost/utility/enable_if.hpp>
+	<boost/core/demangle.hpp>
+	<exception>
+	<sstream>
+	<string>
+	<boost/exception/current_exception_cast.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\get_error_info.hpp
+	<boost/config.hpp>
+	<boost/exception/exception.hpp>
+	<boost/exception/detail/error_info_impl.hpp>
+	<boost/exception/detail/type_info.hpp>
+	<boost/exception/detail/shared_ptr.hpp>
+	<boost/assert.hpp>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\error_info_impl.hpp
+	<boost/config.hpp>
+	<boost/type_traits/is_nothrow_move_constructible.hpp>
+	<utility>
+	<string>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\type_info.hpp
+	<boost/config.hpp>
+	<boost/core/typeinfo.hpp>
+	<boost/core/demangle.hpp>
+	<boost/current_function.hpp>
+	<string>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\shared_ptr.hpp
+	<memory>
+	<boost/shared_ptr.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\info.hpp
+	<boost/config.hpp>
+	<boost/exception/exception.hpp>
+	<boost/exception/to_string_stub.hpp>
+	<boost/exception/detail/error_info_impl.hpp>
+	<boost/exception/detail/shared_ptr.hpp>
+	<map>
+
+1586293653 c:\program files\boost\include\boost\exception\to_string_stub.hpp
+	<boost/exception/to_string.hpp>
+	<boost/exception/detail/object_hex_dump.hpp>
+	<boost/assert.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\to_string.hpp
+	<boost/utility/enable_if.hpp>
+	<boost/exception/detail/is_output_streamable.hpp>
+	<sstream>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\is_output_streamable.hpp
+	<ostream>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\object_hex_dump.hpp
+	<boost/exception/detail/type_info.hpp>
+	<iomanip>
+	<ios>
+	<string>
+	<sstream>
+	<cstdlib>
+
+1586293653 c:\program files\boost\include\boost\exception\current_exception_cast.hpp
+
+1586293653 c:\program files\boost\include\boost\exception\error_info.hpp
+
+1586293653 c:\program files\boost\include\boost\exception\info_tuple.hpp
+	<boost/exception/info.hpp>
+	<boost/tuple/tuple.hpp>
+
+1586293845 c:\program files\boost\include\boost\tuple\tuple.hpp
+	<boost/config.hpp>
+	<boost/static_assert.hpp>
+	<boost/ref.hpp>
+	<boost/tuple/detail/tuple_basic.hpp>
+
+1586293963 c:\program files\boost\include\boost\tuple\detail\tuple_basic.hpp
+	<utility>
+	<boost/type_traits/cv_traits.hpp>
+	<boost/type_traits/function_traits.hpp>
+	<boost/utility/swap.hpp>
+	<boost/detail/workaround.hpp>
+
+1586293846 c:\program files\boost\include\boost\type_traits\cv_traits.hpp
+	<boost/type_traits/add_const.hpp>
+	<boost/type_traits/add_volatile.hpp>
+	<boost/type_traits/add_cv.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/remove_const.hpp>
+	<boost/type_traits/remove_volatile.hpp>
+	<boost/type_traits/remove_cv.hpp>
+
+1586293846 c:\program files\boost\include\boost\type_traits\add_cv.hpp
+	<boost/config.hpp>
+
+1586293847 c:\program files\boost\include\boost\type_traits\remove_volatile.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<cstddef>
+
+1586293847 c:\program files\boost\include\boost\utility\swap.hpp
+	<boost/core/swap.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_api_function.hpp
+	<boost/exception/error_info.hpp>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_at_line.hpp
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_errno.hpp
+	<boost/exception/info.hpp>
+	<errno.h>
+	<string.h>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_file_handle.hpp
+	<stdio.h>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_file_name.hpp
+	<string>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_file_open_mode.hpp
+	<string>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_type_info_name.hpp
+	<string>
+
+1586293653 c:\program files\boost\include\boost\exception\errinfo_nested_exception.hpp
+
+1586293646 c:\program files\boost\include\boost\exception_ptr.hpp
+	<boost/exception/detail/exception_ptr.hpp>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\exception_ptr.hpp
+	<boost/config.hpp>
+	<boost/exception/exception.hpp>
+	<boost/exception/info.hpp>
+	<boost/exception/diagnostic_information.hpp>
+	<boost/exception/detail/clone_current_exception.hpp>
+	<boost/exception/detail/type_info.hpp>
+	<boost/core/demangle.hpp>
+	<boost/shared_ptr.hpp>
+	<stdexcept>
+	<new>
+	<ios>
+	<stdlib.h>
+
+1586293930 c:\program files\boost\include\boost\exception\detail\clone_current_exception.hpp
+
+1587581872 d:\zajecia\projekty\22-project_manager\project_manager\pmutilities.h
+	<string>
+	<map>
+	<boost/filesystem.hpp>
 

@@ -9,12 +9,10 @@
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
 #include <stdexcept>
+#include "pmutilities.h"
 
 class DbManager // Singleton
 {
-
-typedef std::map<std::string, std::string> map_str;
-typedef std::pair<std::string, std::string> pair_str;
 
 private:
     DbManager();
@@ -27,8 +25,8 @@ public:
     void createDb();
     void openDb();
     void closeDb();
-    void addProj(map_str &);
-    void addDoc(map_str &);
+    void addProj(PmUtilities::map_str &);
+    void addDoc(PmUtilities::map_str &);
 
     std::string getDocIdHead();
     std::string getDocNameHead();
@@ -58,7 +56,7 @@ private:
     unsigned projId = 0;
     unsigned docId = 0;
     std::string dbPath;
-    map_str dataBuffer;
+    PmUtilities::map_str dataBuffer;
 
     std::string headDocId = "DOC_ID";
     std::string headDocName = "DOC_NAME";

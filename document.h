@@ -3,13 +3,18 @@
 
 #include <iostream>
 #include <string>
-
+#include <map>
+#include "dbmanager.h"
+#include "pmutilities.h"
 
 class Document //Product
 {
+
 public:
     Document();
     ~Document();
+
+    PmUtilities::map_str *getDocData();
 
     std::string getDocName();
     std::string getDocNum();
@@ -22,20 +27,22 @@ public:
     std::string getDocExt();
     std::string getDocPath();
 
-    void setDocName(const std::string&);
-    void setDocNum(const std::string&);
-    void setDocRev(const std::string&);
-    void setApprDocNum(const std::string&);
-    void setMadeDate(const std::string&);
-    void setReviewDate(const std::string&);
-    void setApprDate(const std::string&);
-    void setProjNum(const std::string&);
-    void setDocExt(const std::string&);
-    void setDocPath(const std::string&);
-    void createDocument();
-    void fillDocument();
+    void setDocData(const PmUtilities::map_str &);
+
+    void setDocName(const std::string &);
+    void setDocNum(const std::string &);
+    void setDocRev(const std::string &);
+    void setApprDocNum(const std::string &);
+    void setMadeDate(const std::string &);
+    void setReviewDate(const std::string &);
+    void setApprDate(const std::string &);
+    void setProjNum(const std::string &);
+    void setDocExt(const std::string &);
+    void setDocPath(const std::string &);
 
 private:
+    PmUtilities::map_str docData;
+
     std::string docName;
     std::string docNum;
     std::string docRev;

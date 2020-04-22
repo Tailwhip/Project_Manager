@@ -4,21 +4,23 @@ DocsGenerator::DocsGenerator() : documenter(NULL) {
 
 }
 
-DocsGenerator::~DocsGenerator(){
+DocsGenerator::~DocsGenerator() {
 }
 
-void DocsGenerator::setDocumenter(Documenter* documenter){
+void DocsGenerator::setDocumenter(Documenter* documenter) {
     this->documenter = documenter;
 }
 
-std::auto_ptr<Document> DocsGenerator::getDocument(){
+std::auto_ptr<Document> DocsGenerator::getDocument() {
     return documenter->getDocument();
 }
 
-void DocsGenerator::generateDoc(){
-
-    //this->documenter->initDoc();
-
+void DocsGenerator::generateDoc() {
+    this->documenter->initDoc();
+    this->documenter->setDocData();
+    this->documenter->createFromTemp();
+    this->documenter->fillDocument();
+    /*
     this->documenter->setDocName();
     this->documenter->setDocNumber();
     this->documenter->setDocRev();
@@ -29,6 +31,5 @@ void DocsGenerator::generateDoc(){
     this->documenter->setProjNum();
     this->documenter->setDocExt();
     this->documenter->setDocPath();
-    this->documenter->createDocument();
-    this->documenter->fillDocument();
+    */
 }

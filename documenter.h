@@ -5,7 +5,7 @@
 #include <string>
 #include <memory>
 #include "document.h"
-
+#include "pmutilities.h"
 
 class Documenter // Abstract Builder
 {
@@ -28,7 +28,10 @@ public:
     virtual void setProjNum() = 0;
     virtual void setDocExt() = 0;
     virtual void setDocPath() = 0;
-    virtual void createDocument() = 0;
+
+
+    virtual void setDocData() = 0;
+    virtual void createFromTemp() = 0;
     virtual void fillDocument() = 0;
 }; // builds any document from scratch
 #endif // DOCUMENTER_H

@@ -101,12 +101,13 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     docData[DbManager::getInstance().getDocRevHead()] = "000";
     docData[DbManager::getInstance().getProjNumberHead()] =  newProjData[DbManager::getInstance().getProjNumberHead()];
 
-    DbManager::getInstance().addDoc(docData);
+    //DbManager::getInstance().addDoc(docData);
     DbManager::getInstance().openDb();
 
     DocsGenerator docGenerator;
 
     GenDocList docList(docData);
+    docGenerator.setDocumenter(&docList);
     docGenerator.generateDoc();
 /*
     std::auto_ptr<Document> document = docGenerator.getDocument();

@@ -4,14 +4,17 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <boost/filesystem.hpp>
+#include <boost/foreach.hpp>
 #include "documenter.h"
 #include "dbmanager.h"
+#include "pmutilities.h"
 
 
 class GenDocList : public Documenter // (Concrete) Documents List Builder
 {
 public:
-    GenDocList(std::map<std::string, std::string>&);
+    GenDocList(PmUtilities::map_str &);
     virtual ~GenDocList();
 
     void setDocName();
@@ -24,11 +27,13 @@ public:
     void setProjNum();
     void setDocExt();
     void setDocPath();
-    void createDocument();
+
+    void setDocData();
+    void createFromTemp();
     void fillDocument();
 
 private:
-    std::map<std::string, std::string> docData;
+    PmUtilities::map_str docData;
 };
 // builds any document from scratch
 
