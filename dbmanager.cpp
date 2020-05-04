@@ -232,9 +232,8 @@ unsigned DbManager::bufferMax(const char* position){
     } catch (std::invalid_argument& e){
         throw std::invalid_argument("Wrong value for comparison!");
         //std::cout<<"Wrong value for comparison!" << std::endl;
-    }
-      catch (std::out_of_range& e){
-;        throw std::out_of_range("Comparison value out of range!");
+    } catch (std::out_of_range& e){
+        throw std::out_of_range("Comparison value out of range!");
         //std::cout<<"Comparison value out of range!" << std::endl;
     }
 }

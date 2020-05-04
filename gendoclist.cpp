@@ -61,13 +61,14 @@ void GenDocList::createFromTemp(){
 
     DbManager::getInstance().addDoc(*(document->getDocData()));
 
-
     boost::filesystem::path tempPath = PmUtilities::Path::toTemplates;
-    tempPath += "/xlstemplate.xlsm";
-    std::cout << "Path: " << tempPath << std::endl;
-    boost::filesystem::copy_file(tempPath,
-    (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+    tempPath /= "xlstemplate.xlsm";
+    std::cout << "TempPath: " << tempPath.make_preferred() << std::endl;
 
+    boost::filesystem::path destPath{"E:/00-Test_proj/xlstemplate.xlsm"};
+    std::cout << "DestPath: " << destPath.make_preferred() << std::endl;
+    boost::filesystem::copy_file(tempPath, destPath);
+    //(*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
 }
 
 void GenDocList::fillDocument(){
