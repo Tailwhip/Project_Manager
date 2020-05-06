@@ -29,8 +29,8 @@ private:
     int newProjHeight = 10;
     // new project panel
     wxPanel *newProjPanel = nullptr;
-    // back button variables
-    static int const backBtnID = 20000;
+    // button 'Back' variables
+    static int const backBtnID = 10000;
     int backBtnWidth = 0;
     int backBtnHeight = 0;
     wxSize backBtnSize;
@@ -38,8 +38,8 @@ private:
     int backBtnPosY = 0;
     wxPoint backBtnPosition;
     wxButton *backBtn = nullptr;
-    // create button variables
-    static int const  createBtnID = 20001;
+    // button 'Create' variables
+    static int const  createBtnID = 10001;
     int createBtnWidth = 0;
     int createBtnHeight = 0;
     wxSize createBtnSize;
@@ -47,6 +47,15 @@ private:
     int createBtnPosY = 0;
     wxPoint createBtnPosition;
     wxButton *createBtn = nullptr;
+    // button 'Choose path' variables
+    static int const  choosePathBtnID = 10002;
+    int choosePathBtnWidth = 0;
+    int choosePathBtnHeight = 0;
+    wxSize choosePathBtnSize;
+    int choosePathBtnPosX = 0;
+    int choosePathBtnPosY = 0;
+    wxPoint choosePathBtnPosition;
+    wxButton *choosePathBtn = nullptr;
     // new project text boxes variables
     int newProjTxtWidth = 0;
     int newProjTxtHeight = 0;
@@ -55,7 +64,7 @@ private:
     int newProjTxtPosY = 0;
     wxPoint newProjTxtPosition;
     unsigned const txtCtrlCount = 3;
-    int const projNameTxtIDbegin = 20002;
+    int const projNameTxtIDbegin = 20000;
     std::vector<wxTextCtrl*> textControls;
     // new project labels variables
     int newProjLabelsWidth = 0;
@@ -71,9 +80,10 @@ private:
 
     // std::string const char*
     // gui objects functions
-    void OnClose(wxCloseEvent& evt);
     void OnBackBtnClicked(wxCommandEvent &evt);
     void OnCreateBtnClicked(wxCommandEvent &evt);
+    void OnChoosePath(wxCommandEvent &evt);
+    void OnClose(wxCloseEvent &evt);
 
     wxDECLARE_EVENT_TABLE();
 };

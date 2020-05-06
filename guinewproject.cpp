@@ -3,23 +3,25 @@
 wxBEGIN_EVENT_TABLE(guiNewProject, wxFrame)
     EVT_BUTTON(backBtnID, OnBackBtnClicked)
     EVT_BUTTON(createBtnID, OnCreateBtnClicked)
+    EVT_BUTTON(choosePathBtnID, OnChoosePath)
     EVT_CLOSE(guiNewProject::OnClose)
 wxEND_EVENT_TABLE()
 
 guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "New Project") {
     this->backFrame = backFrame;
-    // set position
+    // set 'new project' panel
+
     newProjFramePosX = 300;
     newProjFramePosY = 300;
     newProjFramePos = wxPoint(newProjFramePosX, newProjFramePosY);
     this->SetPosition(newProjFramePos);
-    // set size
+
     newProjWidth = 512;
     newProjHeight = 512;
     this->SetSize(newProjWidth, newProjHeight);
-    // set new project panel
+
     newProjPanel = new wxPanel(this, wxID_ANY);
-    // set back button
+    // set button 'Back'
     backBtnWidth = newProjWidth / 4;
     backBtnHeight = newProjHeight / 12;
     backBtnSize = wxSize(backBtnWidth, backBtnHeight);
@@ -27,7 +29,7 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
     backBtnPosY = 0.8 * newProjHeight;
     backBtnPosition = wxPoint(backBtnPosX, backBtnPosY);
     backBtn = new wxButton(newProjPanel, backBtnID, "Back", backBtnPosition, backBtnSize);
-    // set create button
+    // set button 'Create'
     createBtnWidth = backBtnWidth;
     createBtnHeight = backBtnHeight;
     createBtnSize = wxSize(createBtnWidth, createBtnHeight);
@@ -35,19 +37,21 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
     createBtnPosY = 0.8 * newProjHeight;
     createBtnPosition = wxPoint(createBtnPosX, createBtnPosY);
     createBtn = new wxButton(newProjPanel, createBtnID, "Create", createBtnPosition, createBtnSize);
-    // set project name textboxes and labels for texboxes
+    // set textboxes
     newProjTxtWidth = backBtnWidth;
     newProjTxtHeight = 20;
     newProjTxtSize = wxSize(newProjTxtWidth, newProjTxtHeight);
     newProjTxtPosX = 0.25 * newProjWidth;
     //newProjTxtPosY = 0.2 * newProjHeight;
     newProjTxtPosition = wxPoint(newProjTxtPosX, newProjTxtPosY);
-    // labels
+    // set labels for texboxes
     newProjLabelsPosX = 0.05 * newProjWidth;
     newProjLabelsWidth = 100;
     newProjLabelsHeight = newProjTxtHeight;
     newProjLabelsSize = wxSize(newProjLabelsWidth, newProjLabelsHeight);
     labelsTxt = std::vector<char*>{"Project name", "Project Number", "Project Path"};
+
+
 
     for (unsigned i = 0; i < txtCtrlCount; i++) {
         newProjTxtPosY = (0.1 * newProjHeight) + i * (0.1 * newProjHeight);
@@ -58,6 +62,15 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
         textLabels.push_back(new wxStaticText(newProjPanel, projNameLabelsIDbegin + i,
                                               labelsTxt.at(i),  newProjLabelsPosition, newProjLabelsSize));
     }
+
+    // set button 'Choose path'
+    choosePathBtnWidth = backBtnWidth * 0.8;
+    choosePathBtnHeight = newProjTxtHeight;
+    choosePathBtnSize = wxSize(choosePathBtnWidth, choosePathBtnHeight);
+    choosePathBtnPosX = newProjTxtPosX + newProjTxtWidth + 20;
+    choosePathBtnPosY = newProjTxtPosY;
+    choosePathBtnPosition = wxPoint(choosePathBtnPosX, choosePathBtnPosY);
+    choosePathBtn = new wxButton(newProjPanel, choosePathBtnID, "Choose path", choosePathBtnPosition, choosePathBtnSize);
 }
 
 /* // MessageBox pattern
@@ -78,7 +91,7 @@ void guiNewProject::OnBackBtnClicked(wxCommandEvent &evt) {
 }
 
 void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
-
+    ///TODO: Check if all textboxes are filled before creating the new project
     DbManager::getInstance().createDb();
 
     std::map<std::string, std::string> newProjData;
@@ -95,8 +108,11 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     docData[DbManager::getInstance().getDocExtHead()] = ".xlsm";
     docData[DbManager::getInstance().getDocIdHead()] = "NULL";
     docData[DbManager::getInstance().getDocMadeDateHead()] = "";
-    docData[DbManager::getInstance().getDocNameHead()] = "Lista dokumentów";
-    docData[DbManager::getInstance().getDocPathHead()] = newProjData[DbManager::getInstance().getProjPathHead()];
+    docData[DbManager::getInstance().getDocNameHead()] = "Lista_dokumentow";
+    docData[DbManager::getInstance().getDocPathHead()] = newProjData[DbManager::getInstance().getProjPathHead()] + "/"
+    + newProjData[DbManager::getInstance().getProjNumberHead()] + "-"
+    + docData[DbManager::getInstance().getDocNameHead()]
+    + docData[DbManager::getInstance().getDocExtHead()];
     docData[DbManager::getInstance().getDocReviewDateHead()] = "";
     docData[DbManager::getInstance().getDocRevHead()] = "000";
     docData[DbManager::getInstance().getProjNumberHead()] =  newProjData[DbManager::getInstance().getProjNumberHead()];
@@ -109,10 +125,22 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     GenDocList docList(docData);
     docGenerator.setDocumenter(&docList);
     docGenerator.generateDoc();
-/*
+    /*
     std::auto_ptr<Document> document = docGenerator.getDocument();
     document->createDocument();
-*/
+    */
+}
+
+void guiNewProject::OnChoosePath(wxCommandEvent &evt) {
+
+    wxDirDialog* dirDialog = new wxDirDialog(this);
+
+    if (dirDialog->ShowModal() == wxID_OK) {
+        wxString selectedFile = dirDialog->GetPath();
+        textControls.at(2)->SetValue(selectedFile);
+    }
+
+    dirDialog->Destroy();
 }
 
 void guiNewProject::OnClose(wxCloseEvent& evt) {

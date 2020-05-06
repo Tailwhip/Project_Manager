@@ -48,11 +48,12 @@ void GenDocList::setDocPath(){
     document->setDocPath(docData[DbManager::getInstance().getDocPathHead()]);
 }
 
-void GenDocList::setDocData(){
+void GenDocList::setDocData() {
     document->setDocData(docData);
 }
 
-void GenDocList::createFromTemp(){
+void GenDocList::createFromTemp() {
+
     std::cout << "Creating " <<
     (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
     " at " <<
@@ -63,18 +64,54 @@ void GenDocList::createFromTemp(){
 
     boost::filesystem::path tempPath = PmUtilities::Path::toTemplates;
     tempPath /= "xlstemplate.xlsm";
-    std::cout << "TempPath: " << tempPath.make_preferred() << std::endl;
+    //std::cout << tempPath.make_preferred() << std::endl;
 
-    boost::filesystem::path destPath{"E:/00-Test_proj/xlstemplate.xlsm"};
-    std::cout << "DestPath: " << destPath.make_preferred() << std::endl;
-    boost::filesystem::copy_file(tempPath, destPath);
-    //(*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+    boost::filesystem::path docPath{(*document->getDocData())[DbManager::getInstance().getDocPathHead()]};
+    std::cout << docPath.make_preferred() << std::endl;
+    ///TODO: Ask to replace if the file already exists
+    boost::filesystem::copy_file(tempPath, docPath, boost::filesystem::copy_option::overwrite_if_exists);
 }
 
-void GenDocList::fillDocument(){
+void GenDocList::fillDocument() {
     std::cout << "Filling the " <<
     (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
     " document" << std::endl;
 
+    //boost::filesystem::ofstream ofs{(*document->getDocData())[DbManager::getInstance().getDocPathHead()]};
+
+    wxExcelApplication app = wxExcelApplication::GetInstance((*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
