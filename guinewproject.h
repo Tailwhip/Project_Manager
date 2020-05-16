@@ -9,6 +9,7 @@
 #include "gendoclist.h"
 #include "dbmanager.h"
 #include "pmutilities.h"
+#include <boost/date_time.hpp>
 
 
 class guiNewProject : public wxFrame

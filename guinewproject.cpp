@@ -102,18 +102,21 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
 
     DbManager::getInstance().addProj(newProjData);
 
+    // Get current system time
+	boost::posix_time::ptime timeLocal = boost::posix_time::second_clock::local_time();
+
     std::map<std::string, std::string> docData;
     docData[DbManager::getInstance().getApprDocNumHead()] = "";
-    docData[DbManager::getInstance().getDocApprDateHead()] = "";
+    docData[DbManager::getInstance().getDocApprDateHead()] = to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocExtHead()] = ".xlsm";
     docData[DbManager::getInstance().getDocIdHead()] = "NULL";
-    docData[DbManager::getInstance().getDocMadeDateHead()] = "";
+    docData[DbManager::getInstance().getDocMadeDateHead()] = to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocNameHead()] = "Lista_dokumentow";
     docData[DbManager::getInstance().getDocPathHead()] = newProjData[DbManager::getInstance().getProjPathHead()] + "/"
-    + newProjData[DbManager::getInstance().getProjNumberHead()] + "-"
-    + docData[DbManager::getInstance().getDocNameHead()]
-    + docData[DbManager::getInstance().getDocExtHead()];
-    docData[DbManager::getInstance().getDocReviewDateHead()] = "";
+        + newProjData[DbManager::getInstance().getProjNumberHead()] + "-"
+        + docData[DbManager::getInstance().getDocNameHead()]
+        + docData[DbManager::getInstance().getDocExtHead()];
+    docData[DbManager::getInstance().getDocReviewDateHead()] = to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocRevHead()] = "000";
     docData[DbManager::getInstance().getProjNumberHead()] =  newProjData[DbManager::getInstance().getProjNumberHead()];
 

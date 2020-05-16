@@ -79,8 +79,24 @@ void GenDocList::fillDocument() {
 
     //boost::filesystem::ofstream ofs{(*document->getDocData())[DbManager::getInstance().getDocPathHead()]};
 
-    wxExcelApplication app = wxExcelApplication::GetInstance((*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+    //wxExcelApplication app = wxExcelApplication::GetInstance((*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
 
+    wxAutomationObject excelObject;
+    unsigned argsCount = 10;
+    wxVariant params[10] = {"xlstemplate.xlsm!FillMetrics", "Made Name and Surname",
+        (*document->getDocData())[DbManager::getInstance().getDocMadeDateHead()],
+        "Reviewed Name and Surname",
+        (*document->getDocData())[DbManager::getInstance().getDocReviewDateHead()],
+        "Approved Name and Surname",
+        (*document->getDocData())[DbManager::getInstance().getDocApprDateHead()],
+        (*document->getDocData())[DbManager::getInstance().getDocNumHead()],
+        (*document->getDocData())[DbManager::getInstance().getDocRevHead()],
+        (*document->getDocData())[DbManager::getInstance().getDocNameHead()]};
+
+  if (excelObject.GetInstance("Excel.Application")) {
+        excelObject.CallMethod( "Application.Run", argsCount, params);
+        std::cout << "MACRO DONE!" << std::endl;
+  }
 
 }
 

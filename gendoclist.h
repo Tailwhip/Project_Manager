@@ -7,7 +7,9 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/foreach.hpp>
-#include "wx/wxAutoExcel.h"
+//#include "wx/wxAutoExcel.h"
+#include "wx/wx.h"
+#include "wx/msw/ole/automtn.h"
 #include "documenter.h"
 #include "dbmanager.h"
 #include "pmutilities.h"
