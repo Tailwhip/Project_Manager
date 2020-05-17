@@ -83,7 +83,7 @@ void GenDocList::fillDocument() {
 
     wxAutomationObject excelObject;
     unsigned argsCount = 10;
-    wxVariant params[10] = {"xlstemplate.xlsm!FillMetrics", "Made Name and Surname",
+    wxVariant params[10] = {"FillMetrics", "Made Name and Surname", //xlstemplate.xlsm!
         (*document->getDocData())[DbManager::getInstance().getDocMadeDateHead()],
         "Reviewed Name and Surname",
         (*document->getDocData())[DbManager::getInstance().getDocReviewDateHead()],
@@ -93,11 +93,13 @@ void GenDocList::fillDocument() {
         (*document->getDocData())[DbManager::getInstance().getDocRevHead()],
         (*document->getDocData())[DbManager::getInstance().getDocNameHead()]};
 
-  if (excelObject.GetInstance("Excel.Application")) {
-        excelObject.CallMethod( "Application.Run", argsCount, params);
+  if (excelObject.CreateInstance("Excel.Application")) {
+        excelObject.CallMethod("Workbooks.Open", (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+        excelObject.CallMethod("Application.Run", argsCount, params);
+        excelObject.CallMethod("ActiveWorkbook.Save");
+        excelObject.CallMethod("Application.Quit");
         std::cout << "MACRO DONE!" << std::endl;
   }
-
 }
 
 
