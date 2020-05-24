@@ -51,8 +51,6 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
     newProjLabelsSize = wxSize(newProjLabelsWidth, newProjLabelsHeight);
     labelsTxt = std::vector<char*>{"Project name", "Project Number", "Project Path"};
 
-
-
     for (unsigned i = 0; i < txtCtrlCount; i++) {
         newProjTxtPosY = (0.1 * newProjHeight) + i * (0.1 * newProjHeight);
         newProjTxtPosition = wxPoint(newProjTxtPosX, newProjTxtPosY);
@@ -60,7 +58,8 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
                                               newProjTxtPosition, newProjTxtSize));
         newProjLabelsPosition = wxPoint(newProjLabelsPosX , newProjTxtPosY);
         textLabels.push_back(new wxStaticText(newProjPanel, projNameLabelsIDbegin + i,
-                                              labelsTxt.at(i),  newProjLabelsPosition, newProjLabelsSize));
+                                              labelsTxt.at(i),  newProjLabelsPosition,
+                                              newProjLabelsSize));
     }
 
     // set button 'Choose path'
@@ -70,7 +69,11 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
     choosePathBtnPosX = newProjTxtPosX + newProjTxtWidth + 20;
     choosePathBtnPosY = newProjTxtPosY;
     choosePathBtnPosition = wxPoint(choosePathBtnPosX, choosePathBtnPosY);
-    choosePathBtn = new wxButton(newProjPanel, choosePathBtnID, "Choose path", choosePathBtnPosition, choosePathBtnSize);
+    choosePathBtn = new wxButton(newProjPanel,
+                                 choosePathBtnID,
+                                 "Choose path",
+                                 choosePathBtnPosition,
+                                 choosePathBtnSize);
 }
 
 /* // MessageBox pattern
@@ -96,9 +99,12 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
 
     std::map<std::string, std::string> newProjData;
     newProjData[DbManager::getInstance().getProjIdHead()] = "NULL";
-    newProjData[DbManager::getInstance().getProjNameHead()] = (textControls.at(0)->GetValue()).mb_str();
-    newProjData[DbManager::getInstance().getProjNumberHead()] = (textControls.at(1)->GetValue()).mb_str();
-    newProjData[DbManager::getInstance().getProjPathHead()] = (textControls.at(2)->GetValue()).mb_str();
+    newProjData[DbManager::getInstance().getProjNameHead()] =
+        (textControls.at(0)->GetValue()).mb_str();
+    newProjData[DbManager::getInstance().getProjNumberHead()] =
+        (textControls.at(1)->GetValue()).mb_str();
+    newProjData[DbManager::getInstance().getProjPathHead()] =
+        (textControls.at(2)->GetValue()).mb_str();
 
     DbManager::getInstance().addProj(newProjData);
 
@@ -106,19 +112,26 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
 	boost::posix_time::ptime timeLocal = boost::posix_time::second_clock::local_time();
 
     std::map<std::string, std::string> docData;
-    docData[DbManager::getInstance().getApprDocNumHead()] = "";
-    docData[DbManager::getInstance().getDocApprDateHead()] = to_iso_extended_string(timeLocal.date());
+    docData[DbManager::getInstance().getDocNumHead()] =
+        newProjData[DbManager::getInstance().getProjNumberHead()] + "-00"; ///TODO: Add the document's files structure level
+    docData[DbManager::getInstance().getApprDocNumHead()] = "<Approving Document Number>"; ///TODO: Add the approving doc number
+    docData[DbManager::getInstance().getDocApprDateHead()] =
+        to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocExtHead()] = ".xlsm";
     docData[DbManager::getInstance().getDocIdHead()] = "NULL";
-    docData[DbManager::getInstance().getDocMadeDateHead()] = to_iso_extended_string(timeLocal.date());
+    docData[DbManager::getInstance().getDocMadeDateHead()] =
+        to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocNameHead()] = "Lista_dokumentow";
-    docData[DbManager::getInstance().getDocPathHead()] = newProjData[DbManager::getInstance().getProjPathHead()] + "/"
+    docData[DbManager::getInstance().getDocPathHead()] =
+        newProjData[DbManager::getInstance().getProjPathHead()] + "/"
         + newProjData[DbManager::getInstance().getProjNumberHead()] + "-"
         + docData[DbManager::getInstance().getDocNameHead()]
         + docData[DbManager::getInstance().getDocExtHead()];
-    docData[DbManager::getInstance().getDocReviewDateHead()] = to_iso_extended_string(timeLocal.date());
+    docData[DbManager::getInstance().getDocReviewDateHead()] =
+        to_iso_extended_string(timeLocal.date());
     docData[DbManager::getInstance().getDocRevHead()] = "000";
-    docData[DbManager::getInstance().getProjNumberHead()] =  newProjData[DbManager::getInstance().getProjNumberHead()];
+    docData[DbManager::getInstance().getProjNumberHead()] =
+        newProjData[DbManager::getInstance().getProjNumberHead()];
 
     //DbManager::getInstance().addDoc(docData);
     DbManager::getInstance().openDb();

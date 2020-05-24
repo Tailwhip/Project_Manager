@@ -1,6 +1,8 @@
 #ifndef GENDOCLIST_H
 #define GENDOCLIST_H
 
+#include <iterator>
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <map>
@@ -38,6 +40,8 @@ public:
 
 private:
     PmUtilities::map_str docData;
+    void fillMetrics();
+    void fillData();
 
 };
 // builds any document from scratch

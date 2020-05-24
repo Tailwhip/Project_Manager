@@ -25,8 +25,36 @@ public:
     void createDb();
     void openDb();
     void closeDb();
-    void addProj(PmUtilities::map_str &);
-    void addDoc(PmUtilities::map_str &);
+    void addProj(PmUtilities::map_str &projData);
+    void addDoc(PmUtilities::map_str &docData);
+
+    std::string getTableName(unsigned tableNumber);
+
+/*
+    SELECT CASES ANALYSIS:
+
+        SELECT * FROM projects
+            container: map<pair<string, string>, string>
+            max args: 2
+
+        SELECT * FROM projects WHERE proj_id = 14
+        SELECT proj_path FROM projects WHERE proj_id BETWEEN 2 AND 5
+        SELECT * FROM projects WHERE proj_path LIKE "c:/%"
+            container: vector<string>
+            max args: 5
+
+        SELECT PROJ_PATH FROM PROJECTS WHERE PROJ_ID = 14
+            container: string
+*/
+
+    void dataSelect(const std::string &data,
+                    const std::string &tableName,
+                    const std::string &identifierName = "",
+                    const std::string &identifierUpperValue = "",
+                    const std::string &identifierLowerValue = "",
+                    const std::string &containWord = "");
+
+    PmUtilities::db_container dataBuffer;
 
     std::string getDocIdHead();
     std::string getDocNameHead();
@@ -47,16 +75,20 @@ public:
 private:
     static int writeCallback(void *, int, char **, char **);
     static int readCallback(void *, int, char **, char **);
-    unsigned bufferMax(const char* = "first");
+    int bufferMax(const char* = "first");
 
     sqlite3 *database;
     char *zErrMsg = 0;
     int rc;
     std::string sql;
-    unsigned projId = 0;
-    unsigned docId = 0;
+    int projId = 0;
+    int docId = 0;
     std::string dbPath;
-    PmUtilities::map_str dataBuffer;
+
+    std::vector<std::string> tablesNames {
+        "PROJECTS",
+        "DOCUMENTS"
+    };
 
     std::string headDocId = "DOC_ID";
     std::string headDocName = "DOC_NAME";

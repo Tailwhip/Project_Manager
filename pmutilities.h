@@ -5,12 +5,13 @@
 #include <map>
 #include <boost/filesystem.hpp>
 
-namespace PmUtilities{
+namespace PmUtilities {
 
 // typedefs
-typedef std::map<std::string, std::string> map_str;
-typedef std::pair<std::string, std::string> pair_str;
-
+typedef std::pair<std::string, std::string> pair_db; // 1st - db column name; 2nd - table_id
+typedef std::map<pair_db, std::string> map_db; // 1st - db coordinates; 2nd - the data avlue
+typedef std::map<std::string, std::string> map_str; // 1st - db column name; 2nd db value
+typedef std::vector<pair_db> db_container;
 // paths
     namespace Path {
         const boost::filesystem::path toTemplates{"\mstemplates"};

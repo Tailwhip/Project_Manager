@@ -29,7 +29,6 @@ public:
     virtual void setDocExt() = 0;
     virtual void setDocPath() = 0;
 
-
     virtual void setDocData() = 0;
     virtual void createFromTemp() = 0;
     virtual void fillDocument() = 0;

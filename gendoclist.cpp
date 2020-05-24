@@ -73,13 +73,14 @@ void GenDocList::createFromTemp() {
 }
 
 void GenDocList::fillDocument() {
+    fillMetrics();
+    fillData();
+}
+
+void GenDocList::fillMetrics() {
     std::cout << "Filling the " <<
     (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
     " document" << std::endl;
-
-    //boost::filesystem::ofstream ofs{(*document->getDocData())[DbManager::getInstance().getDocPathHead()]};
-
-    //wxExcelApplication app = wxExcelApplication::GetInstance((*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
 
     wxAutomationObject excelObject;
     unsigned argsCount = 10;
@@ -93,17 +94,59 @@ void GenDocList::fillDocument() {
         (*document->getDocData())[DbManager::getInstance().getDocRevHead()],
         (*document->getDocData())[DbManager::getInstance().getDocNameHead()]};
 
-  if (excelObject.CreateInstance("Excel.Application")) {
+    if (excelObject.CreateInstance("Excel.Application")) {
         excelObject.CallMethod("Workbooks.Open", (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
         excelObject.CallMethod("Application.Run", argsCount, params);
         excelObject.CallMethod("ActiveWorkbook.Save");
         excelObject.CallMethod("Application.Quit");
         std::cout << "MACRO DONE!" << std::endl;
-  }
+    }
 }
 
+void GenDocList::fillData() {
 
+    std::string pathHead = DbManager::getInstance().getProjPathHead();
+    std::string tableName = DbManager::getInstance().getTableName(0);
+    std::string projNumHead = DbManager::getInstance().getProjNumberHead();
+    std::string projNumVal = (*document->getDocData())[DbManager::getInstance().getProjNumberHead()];
 
+    DbManager::getInstance().dataSelect(pathHead, tableName, projNumHead, projNumVal);
+
+    std::string p = DbManager::getInstance().dataBuffer.at(0).second;
+
+    //boost::filesystem::path p (path);   // p reads clearer than argv[1] in the following code
+
+    //using namespace std;
+    //using namespace boost::filesystem;
+
+    try{
+        if (boost::filesystem::exists(p))    // does p actually exist?
+        {
+            if (boost::filesystem::is_regular_file(p))        // is p a regular file?
+                std::cout << p << " size is " << boost::filesystem::file_size(p) << '\n';
+
+            else if (boost::filesystem::is_directory(p))      // is p a directory?
+            {
+                std::cout << p << " is a directory containing:\n";
+
+                std::copy(boost::filesystem::directory_iterator(p), boost::filesystem::directory_iterator(),  // directory_iterator::value_type
+                     std::ostream_iterator<boost::filesystem::directory_entry>(std::cout, "\n"));  // is directory_entry, which is
+                // converted to a path by the
+                // path stream inserter
+            }
+            else
+                std::cout << p << " exists, but is neither a regular file nor a directory\n";
+        }
+        else
+            std::cout << p << " does not exist\n";
+    }
+
+    catch (const boost::filesystem::filesystem_error& ex)
+    {
+        std::cout << ex.what() << '\n';
+    }
+
+}
 
 
 

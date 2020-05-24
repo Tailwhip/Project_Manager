@@ -109,6 +109,7 @@
 		<Unit filename="guimain.h" />
 		<Unit filename="guinewproject.cpp" />
 		<Unit filename="guinewproject.h" />
+		<Unit filename="pmutilities.h" />
 		<Unit filename="wx_pch.h">
 			<Option compile="1" />
 			<Option weight="0" />
