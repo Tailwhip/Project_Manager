@@ -73,15 +73,15 @@ void GenDocList::createFromTemp() {
 }
 
 void GenDocList::fillDocument() {
+    std::cout << "Filling the " <<
+    (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
+    " document" << std::endl;
+
     fillMetrics();
     fillData();
 }
 
 void GenDocList::fillMetrics() {
-    std::cout << "Filling the " <<
-    (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
-    " document" << std::endl;
-
     wxAutomationObject excelObject;
     unsigned argsCount = 10;
     wxVariant params[10] = {"FillMetrics", "Made Name and Surname", //xlstemplate.xlsm!
@@ -119,14 +119,12 @@ void GenDocList::fillData() {
     //using namespace std;
     //using namespace boost::filesystem;
 
-    try{
-        if (boost::filesystem::exists(p))    // does p actually exist?
-        {
-            if (boost::filesystem::is_regular_file(p))        // is p a regular file?
+    try {
+        if (boost::filesystem::exists(p)) {    // does p actually exist?
+            if (boost::filesystem::is_regular_file(p))       // is p a regular file?
                 std::cout << p << " size is " << boost::filesystem::file_size(p) << '\n';
 
-            else if (boost::filesystem::is_directory(p))      // is p a directory?
-            {
+            else if (boost::filesystem::is_directory(p)) {     // is p a directory?
                 std::cout << p << " is a directory containing:\n";
 
                 std::copy(boost::filesystem::directory_iterator(p), boost::filesystem::directory_iterator(),  // directory_iterator::value_type
@@ -141,8 +139,7 @@ void GenDocList::fillData() {
             std::cout << p << " does not exist\n";
     }
 
-    catch (const boost::filesystem::filesystem_error& ex)
-    {
+    catch (const boost::filesystem::filesystem_error& ex) {
         std::cout << ex.what() << '\n';
     }
 

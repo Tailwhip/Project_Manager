@@ -11,7 +11,7 @@ namespace PmUtilities {
 typedef std::pair<std::string, std::string> pair_db; // 1st - db column name; 2nd - table_id
 typedef std::map<pair_db, std::string> map_db; // 1st - db coordinates; 2nd - the data avlue
 typedef std::map<std::string, std::string> map_str; // 1st - db column name; 2nd db value
-typedef std::vector<pair_db> db_container;
+typedef std::vector<pair_db> db_container; // a container for data read from db
 // paths
     namespace Path {
         const boost::filesystem::path toTemplates{"\mstemplates"};
