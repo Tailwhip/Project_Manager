@@ -8,6 +8,7 @@
 #include <map>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/range/iterator_range.hpp>
 #include <boost/foreach.hpp>
 //#include "wx/wxAutoExcel.h"
 #include "wx/wx.h"
@@ -33,15 +34,20 @@ public:
     void setProjNum();
     void setDocExt();
     void setDocPath();
-
     void setDocData();
+
     void createFromTemp();
     void fillDocument();
 
 private:
     PmUtilities::map_str docData;
     void fillMetrics();
-    void fillData();
+
+    void fillData(boost::filesystem::path &projectPath, int groupLevel);
+    wxAutomationObject excelObject;
+    static int rowsIterator;
+    bool isTemp(std::string &fileName) const;
+    void groupFile(const std::string &fileName, const int groupLevel);
 
 };
 // builds any document from scratch

@@ -16977,10 +16977,10 @@
 	<boost/preprocessor/repetition/enum_params.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
 
-1590344284 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
+1591291412 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
 	"gendoclist.h"
 
-1589832432 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
+1591289938 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
 	<iterator>
 	<algorithm>
 	<iostream>
@@ -16988,6 +16988,7 @@
 	<map>
 	<boost/filesystem.hpp>
 	<boost/filesystem/fstream.hpp>
+	<boost/range/iterator_range.hpp>
 	<boost/foreach.hpp>
 	"wx/wx.h"
 	"wx/msw/ole/automtn.h"
@@ -17006,7 +17007,7 @@
 	<stdexcept>
 	"pmutilities.h"
 
-1590345375 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
+1591012210 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
 	"dbmanager.h"
 
 1586293646 c:\program files\boost\include\boost\filesystem.hpp

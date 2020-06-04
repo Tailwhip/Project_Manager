@@ -1,11 +1,13 @@
 #include "gendoclist.h"
 
+int GenDocList::rowsIterator = 1;
+
 GenDocList::GenDocList(PmUtilities::map_str &docData) : Documenter(){
     this->docData = docData;
 }
 
 GenDocList::~GenDocList(){
-
+    //excelObject.CallMethod("Application.Quit");
 }
 
 void GenDocList::setDocName(){
@@ -77,14 +79,32 @@ void GenDocList::fillDocument() {
     (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
     " document" << std::endl;
 
-    fillMetrics();
-    fillData();
+    if (excelObject.CreateInstance("Excel.Application")) {
+
+        excelObject.CallMethod("Workbooks.Open", (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
+
+        fillMetrics();
+
+        std::string pathHead = DbManager::getInstance().getProjPathHead();
+        std::string tableName = DbManager::getInstance().getTableName(0);
+        std::string projNumHead = DbManager::getInstance().getProjNumberHead();
+        std::string projNumVal = (*document->getDocData())[DbManager::getInstance().getProjNumberHead()];
+        DbManager::getInstance().dataSelect(pathHead, tableName, projNumHead, projNumVal);
+        boost::filesystem::path projectPath = DbManager::getInstance().dataBuffer.at(0).second;
+
+        int groupLevel = 0;
+
+        fillData(projectPath, groupLevel);
+
+        excelObject.CallMethod("ActiveWorkbook.Save");
+        excelObject.CallMethod("Application.Quit");
+    }
 }
 
 void GenDocList::fillMetrics() {
-    wxAutomationObject excelObject;
     unsigned argsCount = 10;
-    wxVariant params[10] = {"FillMetrics", "Made Name and Surname", //xlstemplate.xlsm!
+    wxVariant params[argsCount] =
+        {"FillMetrics", "Made Name and Surname", //xlstemplate.xlsm!
         (*document->getDocData())[DbManager::getInstance().getDocMadeDateHead()],
         "Reviewed Name and Surname",
         (*document->getDocData())[DbManager::getInstance().getDocReviewDateHead()],
@@ -92,62 +112,72 @@ void GenDocList::fillMetrics() {
         (*document->getDocData())[DbManager::getInstance().getDocApprDateHead()],
         (*document->getDocData())[DbManager::getInstance().getDocNumHead()],
         (*document->getDocData())[DbManager::getInstance().getDocRevHead()],
-        (*document->getDocData())[DbManager::getInstance().getDocNameHead()]};
+        (*document->getDocData())[DbManager::getInstance().getDocNameHead()]
+        };
 
-    if (excelObject.CreateInstance("Excel.Application")) {
-        excelObject.CallMethod("Workbooks.Open", (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
         excelObject.CallMethod("Application.Run", argsCount, params);
-        excelObject.CallMethod("ActiveWorkbook.Save");
-        excelObject.CallMethod("Application.Quit");
-        std::cout << "MACRO DONE!" << std::endl;
-    }
+        //std::cout << "Filling metrics - DONE!" << std::endl;
 }
 
-void GenDocList::fillData() {
+void GenDocList::fillData(boost::filesystem::path &projectPath, int groupLevel) {
 
-    std::string pathHead = DbManager::getInstance().getProjPathHead();
-    std::string tableName = DbManager::getInstance().getTableName(0);
-    std::string projNumHead = DbManager::getInstance().getProjNumberHead();
-    std::string projNumVal = (*document->getDocData())[DbManager::getInstance().getProjNumberHead()];
-
-    DbManager::getInstance().dataSelect(pathHead, tableName, projNumHead, projNumVal);
-
-    std::string p = DbManager::getInstance().dataBuffer.at(0).second;
-
-    //boost::filesystem::path p (path);   // p reads clearer than argv[1] in the following code
-
-    //using namespace std;
-    //using namespace boost::filesystem;
+    groupLevel++;
+    std::cout << "Level: " << groupLevel << "\n";
 
     try {
-        if (boost::filesystem::exists(p)) {    // does p actually exist?
-            if (boost::filesystem::is_regular_file(p))       // is p a regular file?
-                std::cout << p << " size is " << boost::filesystem::file_size(p) << '\n';
+        if (boost::filesystem::exists(projectPath)) {    // does projectPath actually exist?
+            if (boost::filesystem::is_regular_file(projectPath)) {  // is the projectPath a regular file?
+                std::cout << projectPath << " size is " << boost::filesystem::file_size(projectPath) << '\n';
+                /*
+                std::string fileName = (projectPath.filename()).string();
+                if (!isTemp(fileName)) {
+                    //groupFile(fileName, groupLevel);
+                }
+                */
+            } else if (boost::filesystem::is_directory(projectPath)) {     // is the projectPath a directory?
+                std::cout << projectPath << " is a directory containing:\n";
 
-            else if (boost::filesystem::is_directory(p)) {     // is p a directory?
-                std::cout << p << " is a directory containing:\n";
+                    for(auto& entry : boost::make_iterator_range(boost::filesystem::directory_iterator(projectPath), {})) {
+                        std::cout << entry << "\n";
+                        std::cout << "Iterator: " << rowsIterator << "\n";
 
-                std::copy(boost::filesystem::directory_iterator(p), boost::filesystem::directory_iterator(),  // directory_iterator::value_type
-                     std::ostream_iterator<boost::filesystem::directory_entry>(std::cout, "\n"));  // is directory_entry, which is
-                // converted to a path by the
-                // path stream inserter
-            }
-            else
-                std::cout << p << " exists, but is neither a regular file nor a directory\n";
-        }
-        else
-            std::cout << p << " does not exist\n";
-    }
+                        std::string fileName = (entry.path().filename()).string();
 
-    catch (const boost::filesystem::filesystem_error& ex) {
+                        if (!isTemp(fileName)) {
+                            groupFile(fileName, groupLevel);
+                        }
+
+                        boost::filesystem::path newPath = projectPath;
+                        newPath /= fileName;
+                        fillData(newPath, groupLevel);
+                    }
+            } else
+                std::cout << projectPath << " exists, but is neither a regular file nor a directory\n";
+        } else
+            std::cout << projectPath << " does not exist\n";
+    } catch (const boost::filesystem::filesystem_error& ex) {
         std::cout << ex.what() << '\n';
     }
-
 }
 
+bool GenDocList::isTemp(std::string &fileName) const {
+    if (fileName[0] == '~') {
+        std::cout << fileName <<" file name first sign is: " << fileName[0] << std::endl;
+        return true;
+    } else
+        return false;
+}
 
+void GenDocList::groupFile(const std::string &fileName, const int groupLevel) {
 
+    unsigned argsCount = 4;
 
+    wxVariant params[argsCount] =
+        {"GroupData", fileName, std::to_string(groupLevel), std::to_string(rowsIterator)};
+    excelObject.CallMethod("Application.Run", argsCount, params);
+
+    rowsIterator++;
+}
 
 
 

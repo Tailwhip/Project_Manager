@@ -61,14 +61,12 @@ void DbManager::openDb() {
         sql = "SELECT " + headDocId + " FROM DOCUMENTS";
         rc = sqlite3_exec(database, sql.c_str(), readCallback, NULL, &zErrMsg);
         docId = bufferMax("second");
-        std::cout << "docId " << docId << std::endl;
         dataBuffer.clear();
 
         // set the project last db id number
         sql = "SELECT " + headProjId + " FROM PROJECTS";
         rc = sqlite3_exec(database, sql.c_str(), readCallback, NULL, &zErrMsg);
         projId = bufferMax("second");
-        std::cout << "projId " << projId << std::endl;
 
     } else {
         std::cout << "There's no database to open. Create one first!" << std::endl;
@@ -193,14 +191,14 @@ void DbManager::dataSelect(const std::string &data,
 
 int DbManager::writeCallback(void *NotUsed, int argc, char **argv, char **azColName) {
     for(unsigned i = 0; i < argc; i++) {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        //printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
     }
     printf("\n");
     return 0;
 }
 
 int DbManager::readCallback(void *data, int argc, char **argv, char **azColName) {
-    fprintf(stderr, "%s: ", (const char*)data);
+    //fprintf(stderr, "%s: ", (const char*)data);
     DbManager::getInstance().dataBuffer.clear();
 
     for(unsigned i = 0; i < argc; i++) {
@@ -228,7 +226,6 @@ int DbManager::bufferMax(const char* position) {
         } else if (position == "second") { // returns the second of pair of the data
             BOOST_FOREACH(PmUtilities::db_container::value_type &i, dataBuffer){
                 compVar = std::stoi(i.second);
-                std::cout << "SECOND: " << i.second;
                 if (compVar > result) result = compVar;
             }
 
