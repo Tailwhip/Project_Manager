@@ -23,7 +23,7 @@ public:
     DocsGenerator();
     ~DocsGenerator();
 
-    void setDocumenter(Documenter*);
+    void setDocumenter(Documenter* documenter);
     std::auto_ptr<Document> getDocument();
     void generateDoc();
 private:

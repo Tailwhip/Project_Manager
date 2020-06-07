@@ -79,8 +79,8 @@ void DbManager::closeDb() {
 
 void DbManager::addProj(PmUtilities::map_str &projData) {
 
+    // prevention to adding a project that already exists
     dataSelect(headProjNumber, tablesNames.at(0));
-
     BOOST_FOREACH(PmUtilities::db_container::value_type &i, dataBuffer) {
         if (projData[headProjNumber] == i.second) {
             wxString message;
@@ -111,8 +111,8 @@ void DbManager::addProj(PmUtilities::map_str &projData) {
 
 void DbManager::addDoc(PmUtilities::map_str &docData) {
 
+    // prevention to adding a document that already exists
     dataSelect(headDocNumber, tablesNames.at(1));
-
     BOOST_FOREACH(PmUtilities::db_container::value_type &i, dataBuffer) {
         if (docData[headDocNumber] == i.second) {
             wxString message;
@@ -164,14 +164,13 @@ void DbManager::dataSelect(const std::string &data,
                            const std::string &containWord) {
 
     rc = sqlite3_open(dbPath.c_str(), &database);
-
     if (identifierName == "" && identifierUpperValue == "" &&
         identifierLowerValue == "" && containWord == "") {
                     sql = "SELECT " + data + " FROM " + tableName;
     } else if (identifierName != "" && identifierUpperValue != "" &&
                identifierLowerValue == "" && containWord == "") {
                     sql = "SELECT " + data + " FROM " + tableName + " WHERE "
-                    + identifierName + " = " + identifierUpperValue;
+                    + identifierName + " = \"" + identifierUpperValue + "\"";
     } else if (identifierName != "" && identifierUpperValue != "" &&
                identifierLowerValue != "" && containWord == "") {
                     sql = "SELECT " + data + " FROM " + tableName + " WHERE "
@@ -184,9 +183,8 @@ void DbManager::dataSelect(const std::string &data,
     } else {
         std::cout << "Wrong data select! " << std::endl;
     }
-
+    //std::cout << sql << std::endl;
     rc = sqlite3_exec(database, sql.c_str(), readCallback, NULL, &zErrMsg);
-    std::cout << "Reading data ..." << std::endl;
 }
 
 int DbManager::writeCallback(void *NotUsed, int argc, char **argv, char **azColName) {
@@ -199,11 +197,12 @@ int DbManager::writeCallback(void *NotUsed, int argc, char **argv, char **azColN
 
 int DbManager::readCallback(void *data, int argc, char **argv, char **azColName) {
     //fprintf(stderr, "%s: ", (const char*)data);
+    std::cout << "Reading data ..." << std::endl;
     DbManager::getInstance().dataBuffer.clear();
 
     for(unsigned i = 0; i < argc; i++) {
-        //std::cout << "[read] azColName: " << azColName[i] << std::endl;
-        //std::cout << "[read] argv: " << argv[i] << std::endl;
+        std::cout << "[read] azColName: " << azColName[i] << std::endl;
+        std::cout << "[read] argv: " << argv[i] << std::endl;
         DbManager::getInstance().dataBuffer.push_back(std::make_pair(azColName[i], argv[i]));
     }
 
@@ -220,15 +219,13 @@ int DbManager::bufferMax(const char* position) {
                 compVar = std::stoi(i.first);
                 if (compVar > result) result = compVar;
             }
-
             return result;
 
         } else if (position == "second") { // returns the second of pair of the data
-            BOOST_FOREACH(PmUtilities::db_container::value_type &i, dataBuffer){
+            BOOST_FOREACH(PmUtilities::db_container::value_type &i, dataBuffer) {
                 compVar = std::stoi(i.second);
                 if (compVar > result) result = compVar;
             }
-
             return result;
 
         } else std::cout<<"Wrong max function argument!" << std::endl;

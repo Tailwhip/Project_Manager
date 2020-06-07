@@ -18,7 +18,6 @@ typedef std::vector<pair_db> db_container; // a container for data read from db
         //D:\\Zajecia\\Projekty\\22-Project_Manager\\Project_Manager\\mstemplates\\
         //E:/00-Test_proj
     }
-
 }
 
 #endif // PMUTILITIES_H

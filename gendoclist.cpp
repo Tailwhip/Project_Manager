@@ -1,6 +1,5 @@
 #include "gendoclist.h"
 
-int GenDocList::rowsIterator = 1;
 
 GenDocList::GenDocList(PmUtilities::map_str &docData) : Documenter(){
     this->docData = docData;
@@ -62,14 +61,13 @@ void GenDocList::createFromTemp() {
     (*document->getDocData())[DbManager::getInstance().getDocPathHead()] <<
     " path" << std::endl;
 
-    DbManager::getInstance().addDoc(*(document->getDocData()));
+    //DbManager::getInstance().addDoc(*(document->getDocData()));
 
     boost::filesystem::path tempPath = PmUtilities::Path::toTemplates;
     tempPath /= "xlstemplate.xlsm";
-    //std::cout << tempPath.make_preferred() << std::endl;
 
     boost::filesystem::path docPath{(*document->getDocData())[DbManager::getInstance().getDocPathHead()]};
-    std::cout << docPath.make_preferred() << std::endl;
+    //std::cout << docPath.make_preferred() << std::endl;
     ///TODO: Ask to replace if the file already exists
     boost::filesystem::copy_file(tempPath, docPath, boost::filesystem::copy_option::overwrite_if_exists);
 }
@@ -78,7 +76,7 @@ void GenDocList::fillDocument() {
     std::cout << "Filling the " <<
     (*document->getDocData())[DbManager::getInstance().getDocNameHead()] <<
     " document" << std::endl;
-
+    rowsIterator = 1;
     if (excelObject.CreateInstance("Excel.Application")) {
 
         excelObject.CallMethod("Workbooks.Open", (*document->getDocData())[DbManager::getInstance().getDocPathHead()]);
@@ -89,7 +87,9 @@ void GenDocList::fillDocument() {
         std::string tableName = DbManager::getInstance().getTableName(0);
         std::string projNumHead = DbManager::getInstance().getProjNumberHead();
         std::string projNumVal = (*document->getDocData())[DbManager::getInstance().getProjNumberHead()];
+
         DbManager::getInstance().dataSelect(pathHead, tableName, projNumHead, projNumVal);
+
         boost::filesystem::path projectPath = DbManager::getInstance().dataBuffer.at(0).second;
 
         int groupLevel = 0;
@@ -121,8 +121,11 @@ void GenDocList::fillMetrics() {
 
 void GenDocList::fillData(boost::filesystem::path &projectPath, int groupLevel) {
 
-    groupLevel++;
-    std::cout << "Level: " << groupLevel << "\n";
+    if (groupLevel < 8) { // prevention to exceed max excel grouping level
+        groupLevel++;
+    }
+
+    std::cout << "Project Path: " << projectPath << "\n";
 
     try {
         if (boost::filesystem::exists(projectPath)) {    // does projectPath actually exist?

@@ -27,18 +27,18 @@ public:
     std::string getDocExt();
     std::string getDocPath();
 
-    void setDocData(const PmUtilities::map_str &);
+    void setDocData(const PmUtilities::map_str &docData);
 
-    void setDocName(const std::string &);
-    void setDocNum(const std::string &);
-    void setDocRev(const std::string &);
-    void setApprDocNum(const std::string &);
-    void setMadeDate(const std::string &);
-    void setReviewDate(const std::string &);
-    void setApprDate(const std::string &);
-    void setProjNum(const std::string &);
-    void setDocExt(const std::string &);
-    void setDocPath(const std::string &);
+    void setDocName(const std::string &docName);
+    void setDocNum(const std::string &docNum);
+    void setDocRev(const std::string &docRev);
+    void setApprDocNum(const std::string &apprDocNum);
+    void setMadeDate(const std::string &madeDate);
+    void setReviewDate(const std::string &reviewDate);
+    void setApprDate(const std::string &apprDate);
+    void setProjNum(const std::string &projNum);
+    void setDocExt(const std::string &docExt);
+    void setDocPath(const std::string &docPath);
 
 private:
     PmUtilities::map_str docData;

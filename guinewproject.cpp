@@ -133,8 +133,8 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     docData[DbManager::getInstance().getProjNumberHead()] =
         newProjData[DbManager::getInstance().getProjNumberHead()];
 
-    //DbManager::getInstance().addDoc(docData);
-    DbManager::getInstance().openDb();
+    DbManager::getInstance().addDoc(docData);
+    //DbManager::getInstance().openDb();
 
     DocsGenerator docGenerator;
 

@@ -21,7 +21,7 @@
 class GenDocList : public Documenter // (Concrete) Documents List Builder
 {
 public:
-    GenDocList(PmUtilities::map_str &);
+    GenDocList(PmUtilities::map_str &docData);
     virtual ~GenDocList();
 
     void setDocName();
@@ -45,7 +45,7 @@ private:
 
     void fillData(boost::filesystem::path &projectPath, int groupLevel);
     wxAutomationObject excelObject;
-    static int rowsIterator;
+    int rowsIterator = 0;
     bool isTemp(std::string &fileName) const;
     void groupFile(const std::string &fileName, const int groupLevel);
 

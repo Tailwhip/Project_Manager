@@ -2641,17 +2641,17 @@
 
 1572201702 d:\zajecia\projekty\22-project_manager\project_manager\dependancies\wxwidgets-3.1.3\include\wx\qt\mdi.h
 
-1587578129 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
+1591558300 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
 	"document.h"
 
-1587578273 d:\zajecia\projekty\22-project_manager\project_manager\document.h
+1591557877 d:\zajecia\projekty\22-project_manager\project_manager\document.h
 	<iostream>
 	<string>
 	<map>
 	"dbmanager.h"
 	"pmutilities.h"
 
-1587410272 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
+1591558257 source:d:\zajecia\projekty\22-project_manager\project_manager\documenter.cpp
 	"documenter.h"
 
 1590093606 d:\zajecia\projekty\22-project_manager\project_manager\documenter.h
@@ -2661,10 +2661,10 @@
 	"document.h"
 	"pmutilities.h"
 
-1587576400 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
+1591469202 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
 	"docsgenerator.h"
 
-1587574645 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+1591558004 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
 	<exception>
 	<boost/exception/all.hpp>
 	<stdio.h>
@@ -2715,7 +2715,7 @@
 1586370544 source:d:\zajecia\projekty\22-project_manager\project_manager\guimain.cpp
 	"guimain.h"
 
-1590256617 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
+1591461233 source:d:\zajecia\projekty\22-project_manager\project_manager\guinewproject.cpp
 	"guinewproject.h"
 
 1586293650 c:\program files\boost\include\boost\chrono\chrono.hpp
@@ -16977,10 +16977,10 @@
 	<boost/preprocessor/repetition/enum_params.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
 
-1591291412 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
+1591556926 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
 	"gendoclist.h"
 
-1591289938 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
+1591553120 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
 	<iterator>
 	<algorithm>
 	<iostream>
@@ -16996,7 +16996,7 @@
 	"dbmanager.h"
 	"pmutilities.h"
 
-1590435092 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
+1591559717 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
 	<iostream>
 	<string>
 	<map>
@@ -17007,7 +17007,7 @@
 	<stdexcept>
 	"pmutilities.h"
 
-1591012210 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
+1591560443 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
 	"dbmanager.h"
 
 1586293646 c:\program files\boost\include\boost\filesystem.hpp
@@ -20147,7 +20147,7 @@
 
 1586293930 c:\program files\boost\include\boost\exception\detail\clone_current_exception.hpp
 
-1590435812 d:\zajecia\projekty\22-project_manager\project_manager\pmutilities.h
+1591461472 d:\zajecia\projekty\22-project_manager\project_manager\pmutilities.h
 	<string>
 	<map>
 	<boost/filesystem.hpp>

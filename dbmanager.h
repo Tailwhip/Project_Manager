@@ -73,8 +73,8 @@ public:
     std::string getProjPathHead();
 
 private:
-    static int writeCallback(void *, int, char **, char **);
-    static int readCallback(void *, int, char **, char **);
+    static int writeCallback(void *NotUsed, int argc, char **argv, char **azColName);
+    static int readCallback(void *data, int argc, char **argv, char **azColName);
     int bufferMax(const char* = "first");
 
     sqlite3 *database;
