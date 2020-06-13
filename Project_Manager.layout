@@ -2,99 +2,101 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="wx_pch.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="guilauncher.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="445" topLine="0" />
+			<Cursor1 position="249" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="documenter.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="guilauncher.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="519" topLine="0" />
+			<Cursor1 position="243" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="docsgenerator.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="guimain.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="583" topLine="0" />
+			<Cursor1 position="2116" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="pmutilities.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="guinewproject.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="526" topLine="0" />
+			<Cursor1 position="4420" topLine="63" />
 		</Cursor>
 	</File>
-	<File name="docsgenerator.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="guinewproject.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="481" topLine="0" />
+			<Cursor1 position="5698" topLine="108" />
 		</Cursor>
 	</File>
-	<File name="guinewproject.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+	<File name="pmutilities.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1460" topLine="0" />
+			<Cursor1 position="799" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="gendoclist.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="dbmanager.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3099" topLine="50" />
+			<Cursor1 position="5748" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="document.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="54" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="document.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1170" topLine="55" />
+		</Cursor>
+	</File>
+	<File name="gendoclist.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="538" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="docsgenerator.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="251" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="docsgenerator.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="86" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="documenter.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="244" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="dbmanager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="164" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="gendoclist.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1491" topLine="138" />
 		</Cursor>
 		<Folding>
-			<Collapse line="11" />
-			<Collapse line="15" />
-			<Collapse line="19" />
-			<Collapse line="23" />
 			<Collapse line="27" />
 			<Collapse line="31" />
 			<Collapse line="35" />
 			<Collapse line="39" />
 			<Collapse line="43" />
-			<Collapse line="47" />
 		</Folding>
 	</File>
-	<File name="dbmanager.cpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="wx_pch.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7206" topLine="147" />
-		</Cursor>
-		<Folding>
-			<Collapse line="79" />
-		</Folding>
-	</File>
-	<File name="gendoclist.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="890" topLine="4" />
+			<Cursor1 position="445" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="guilauncher.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="documenter.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="322" topLine="5" />
 		</Cursor>
 	</File>
-	<File name="guinewproject.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="guimain.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6361" topLine="103" />
-		</Cursor>
-	</File>
-	<File name="document.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="158" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="guimain.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1603" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="dbmanager.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1604" topLine="47" />
-		</Cursor>
-	</File>
-	<File name="document.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="266" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="documenter.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="241" topLine="0" />
+			<Cursor1 position="453" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

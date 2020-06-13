@@ -2644,7 +2644,7 @@
 1591558300 source:d:\zajecia\projekty\22-project_manager\project_manager\document.cpp
 	"document.h"
 
-1591557877 d:\zajecia\projekty\22-project_manager\project_manager\document.h
+1591981126 d:\zajecia\projekty\22-project_manager\project_manager\document.h
 	<iostream>
 	<string>
 	<map>
@@ -2661,10 +2661,10 @@
 	"document.h"
 	"pmutilities.h"
 
-1591469202 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
+1591981253 source:d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.cpp
 	"docsgenerator.h"
 
-1591558004 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
+1591982055 d:\zajecia\projekty\22-project_manager\project_manager\docsgenerator.h
 	<exception>
 	<boost/exception/all.hpp>
 	<stdio.h>
@@ -16977,10 +16977,10 @@
 	<boost/preprocessor/repetition/enum_params.hpp>
 	<boost/preprocessor/repetition/enum_binary_params.hpp>
 
-1591556926 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
+1591982806 source:d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.cpp
 	"gendoclist.h"
 
-1591553120 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
+1592043336 d:\zajecia\projekty\22-project_manager\project_manager\gendoclist.h
 	<iterator>
 	<algorithm>
 	<iostream>
@@ -16996,7 +16996,7 @@
 	"dbmanager.h"
 	"pmutilities.h"
 
-1591559717 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
+1591964105 d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.h
 	<iostream>
 	<string>
 	<map>
@@ -17007,7 +17007,7 @@
 	<stdexcept>
 	"pmutilities.h"
 
-1591560443 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
+1591560657 source:d:\zajecia\projekty\22-project_manager\project_manager\dbmanager.cpp
 	"dbmanager.h"
 
 1586293646 c:\program files\boost\include\boost\filesystem.hpp
@@ -20147,7 +20147,7 @@
 
 1586293930 c:\program files\boost\include\boost\exception\detail\clone_current_exception.hpp
 
-1591461472 d:\zajecia\projekty\22-project_manager\project_manager\pmutilities.h
+1591978562 d:\zajecia\projekty\22-project_manager\project_manager\pmutilities.h
 	<string>
 	<map>
 	<boost/filesystem.hpp>

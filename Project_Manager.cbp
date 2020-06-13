@@ -95,8 +95,6 @@
 		<Unit filename="dbmanager.h" />
 		<Unit filename="docsgenerator.cpp" />
 		<Unit filename="docsgenerator.h" />
-		<Unit filename="docslist.cpp" />
-		<Unit filename="docslist.h" />
 		<Unit filename="document.cpp" />
 		<Unit filename="document.h" />
 		<Unit filename="documenter.cpp" />

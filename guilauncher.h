@@ -4,16 +4,20 @@
 
 #ifndef GUILAUNCHER_H
 #define GUILAUNCHER_H
-
-class guiLauncher : public wxApp
+/// Class using only to launch the main menu frame of the application.
+class GuiLauncher : public wxApp
 {
 public:
-    guiLauncher();
-    ~guiLauncher();
+    /// Constructor.
+    GuiLauncher();
+    /// Destructor.
+    ~GuiLauncher();
 private:
-    guiMain* mainFrame = nullptr;
+    /// Main frame object.
+    GuiMain* mainFrame = nullptr;
 
 public:
+    /// Function initialising the main frame of the application.
     virtual bool OnInit();
 };
 

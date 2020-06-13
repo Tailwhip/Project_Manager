@@ -1,20 +1,20 @@
 #include "guilauncher.h"
 
-wxIMPLEMENT_APP(guiLauncher);
+wxIMPLEMENT_APP(GuiLauncher);
 
-guiLauncher::guiLauncher()
+GuiLauncher::GuiLauncher()
 {
 
 }
 
-guiLauncher::~guiLauncher()
+GuiLauncher::~GuiLauncher()
 {
 
 }
 
-bool guiLauncher::OnInit()
+bool GuiLauncher::OnInit()
 {
-    mainFrame = new guiMain();
+    mainFrame = new GuiMain();
     mainFrame->Show();
 
     return true;

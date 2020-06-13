@@ -5,8 +5,7 @@ wxBEGIN_EVENT_TABLE(guiMain, wxFrame)
     EVT_CLOSE(guiMain::OnClose)
 wxEND_EVENT_TABLE()
 
-guiMain::guiMain() : wxFrame(nullptr, wxID_ANY, "Project Manager")
-{
+guiMain::GuiMain() : wxFrame(nullptr, wxID_ANY, "Project Manager") {
     // set frame position
     mainFramePosX = 300;
     mainFramePosY = 300;
@@ -30,23 +29,19 @@ guiMain::guiMain() : wxFrame(nullptr, wxID_ANY, "Project Manager")
     newProjBtn = new wxButton(mainPanel, 10000, "New project", newProjBtnPos, newProjBtnSize);
 }
 
-guiMain::~guiMain()
-{
+GuiMain::~GuiMain() {
 
 }
 
-int guiMain::getFrameWidth()
-{
+int GuiMain::getFrameWidth() {
     return mainFrameWidth;
 }
 
-int guiMain::getFrameHeight()
-{
+int GuiMain::getFrameHeight() {
     return mainFrameHeight;
 }
 
-void guiMain::OnButtonClicked(wxCommandEvent &evt)
-{
+void GuiMain::OnButtonClicked(wxCommandEvent &evt) {
     newProjFrame = new guiNewProject(this);
     newProjFrame->Show();
     this->Show(false);
@@ -54,8 +49,7 @@ void guiMain::OnButtonClicked(wxCommandEvent &evt)
     evt.Skip();
 }
 
-void guiMain::OnClose(wxCloseEvent& evt)
-{
+void GuiMain::OnClose(wxCloseEvent& evt) {
     if (!(newProjFrame = nullptr))
         newProjFrame->Close(true);
     this->Close(true);

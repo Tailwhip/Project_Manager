@@ -7,19 +7,16 @@ wxBEGIN_EVENT_TABLE(guiNewProject, wxFrame)
     EVT_CLOSE(guiNewProject::OnClose)
 wxEND_EVENT_TABLE()
 
-guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "New Project") {
+GuiNewProject::GuiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "New Project") {
     this->backFrame = backFrame;
-    // set 'new project' panel
-
+    // set 'New project' panel
     newProjFramePosX = 300;
     newProjFramePosY = 300;
     newProjFramePos = wxPoint(newProjFramePosX, newProjFramePosY);
     this->SetPosition(newProjFramePos);
-
     newProjWidth = 512;
     newProjHeight = 512;
     this->SetSize(newProjWidth, newProjHeight);
-
     newProjPanel = new wxPanel(this, wxID_ANY);
     // set button 'Back'
     backBtnWidth = newProjWidth / 4;
@@ -76,24 +73,18 @@ guiNewProject::guiNewProject(wxFrame* backFrame) : wxFrame(nullptr, wxID_ANY, "N
                                  choosePathBtnSize);
 }
 
-/* // MessageBox pattern
-    wxString message;
-    message.Printf(wxT("Liczba:  "));
-    wxMessageBox(message);
-*/
-
-guiNewProject::~guiNewProject() {
+GuiNewProject::~GuiNewProject() {
 
 }
 
-void guiNewProject::OnBackBtnClicked(wxCommandEvent &evt) {
+void GuiNewProject::OnBackBtnClicked(wxCommandEvent &evt) {
     this->backFrame->Show(true);
     this->Show(false);
     //m_list1->AppendString(m_txt1->GetValue());
     evt.Skip();
 }
 
-void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
+void GuiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     ///TODO: Check if all textboxes are filled before creating the new project
     DbManager::getInstance().createDb();
 
@@ -147,7 +138,7 @@ void guiNewProject::OnCreateBtnClicked(wxCommandEvent &evt) {
     */
 }
 
-void guiNewProject::OnChoosePath(wxCommandEvent &evt) {
+void GuiNewProject::OnChoosePath(wxCommandEvent &evt) {
 
     wxDirDialog* dirDialog = new wxDirDialog(this);
 
@@ -159,7 +150,7 @@ void guiNewProject::OnChoosePath(wxCommandEvent &evt) {
     dirDialog->Destroy();
 }
 
-void guiNewProject::OnClose(wxCloseEvent& evt) {
+void GuiNewProject::OnClose(wxCloseEvent& evt) {
     this->Close(true);
     this->backFrame->Close(true);
 }

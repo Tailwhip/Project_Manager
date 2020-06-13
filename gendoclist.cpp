@@ -1,51 +1,51 @@
 #include "gendoclist.h"
 
 
-GenDocList::GenDocList(PmUtilities::map_str &docData) : Documenter(){
+GenDocList::GenDocList(PmUtilities::map_str &docData) : Documenter() {
     this->docData = docData;
 }
 
-GenDocList::~GenDocList(){
+GenDocList::~GenDocList() {
     //excelObject.CallMethod("Application.Quit");
 }
 
-void GenDocList::setDocName(){
+void GenDocList::setDocName() {
     document->setDocName(docData[DbManager::getInstance().getDocNameHead()]);
 }
 
-void GenDocList::setDocNumber(){
+void GenDocList::setDocNumber() {
     document->setDocNum(docData[DbManager::getInstance().getDocNumHead()]);
 }
 
-void GenDocList::setDocRev(){
+void GenDocList::setDocRev() {
     document->setDocRev(docData[DbManager::getInstance().getDocRevHead()]);
 }
 
-void GenDocList::setApprDocNum(){
+void GenDocList::setApprDocNum() {
     document->setApprDocNum(docData[DbManager::getInstance().getApprDocNumHead()]);
 }
 
-void GenDocList::setMadeDate(){
+void GenDocList::setMadeDate() {
     document->setMadeDate(docData[DbManager::getInstance().getDocMadeDateHead()]);
 }
 
-void GenDocList::setReviewDate(){
+void GenDocList::setReviewDate() {
     document->setReviewDate(docData[DbManager::getInstance().getDocReviewDateHead()]);
 }
 
-void GenDocList::setApprDate(){
+void GenDocList::setApprDate() {
     document->setApprDate(docData[DbManager::getInstance().getDocApprDateHead()]);
 }
 
-void GenDocList::setProjNum(){
+void GenDocList::setProjNum() {
     document->setProjNum(docData[DbManager::getInstance().getProjNumberHead()]);
 }
 
-void GenDocList::setDocExt(){
+void GenDocList::setDocExt() {
     document->setDocExt(docData[DbManager::getInstance().getDocExtHead()]);
 }
 
-void GenDocList::setDocPath(){
+void GenDocList::setDocPath() {
     document->setDocPath(docData[DbManager::getInstance().getDocPathHead()]);
 }
 

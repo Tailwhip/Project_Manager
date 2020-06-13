@@ -5,6 +5,7 @@ DocsGenerator::DocsGenerator() : documenter(NULL) {
 }
 
 DocsGenerator::~DocsGenerator() {
+
 }
 
 void DocsGenerator::setDocumenter(Documenter* documenter) {
